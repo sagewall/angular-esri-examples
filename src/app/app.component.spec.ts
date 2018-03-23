@@ -1,13 +1,15 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { MapViewComponent } from './map-view/map-view.component';
+import { SceneViewComponent } from './scene-view/scene-view.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        MapViewComponent
+        MapViewComponent,
+        SceneViewComponent
       ],
     }).compileComponents();
   }));
