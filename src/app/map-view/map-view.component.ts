@@ -16,7 +16,11 @@ export class MapViewComponent implements OnInit {
   private _mapView: esri.MapView;
   private _mapViewProperties: esri.MapViewProperties;
   private _rotation = 0;
+  private _search: esri.Search;
+  private _searchPosition = 'top-left';
+  private _searchProperties: esri.SearchProperties;
   private _showLayerList = true;
+  private _showSearch = true;
   private _webMap: esri.WebMap;
   private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
   private _webMapProperties: esri.WebMapProperties;
@@ -81,6 +85,31 @@ export class MapViewComponent implements OnInit {
     return this._rotation;
   }
 
+  set search(search: esri.Search) {
+    this._search = search;
+  }
+
+  get search() {
+    return this._search;
+  }
+
+  @Input()
+  set searchPosition(searchPosition: string) {
+    this._searchPosition = searchPosition;
+  }
+
+  get searchPosition() {
+    return this._searchPosition;
+  }
+
+  set searchProperties(searchProperties: esri.SearchProperties) {
+    this._searchProperties = searchProperties;
+  }
+
+  get searchProperties() {
+    return this._searchProperties;
+  }
+
   @Input()
   set showLayerList(showLayerList: boolean) {
     this._showLayerList = showLayerList;
@@ -88,6 +117,15 @@ export class MapViewComponent implements OnInit {
 
   get showLayerList() {
     return this._showLayerList;
+  }
+
+  @Input()
+  set showSearch(showSearch: boolean) {
+    this._showSearch = showSearch;
+  }
+
+  get showSearch() {
+    return this._showSearch;
   }
 
   set webMap(webMap: esri.WebMap) {
@@ -135,11 +173,13 @@ export class MapViewComponent implements OnInit {
   ngOnInit() {
     loadModules([
       'esri/widgets/LayerList',
+      'esri/widgets/Search',
       'esri/WebMap',
       'esri/views/MapView'
     ])
       .then(([
                LayerList,
+               Search,
                WebMap,
                MapView]) => {
         this.webMapProperties = {
@@ -169,6 +209,19 @@ export class MapViewComponent implements OnInit {
           this.mapView.ui.add(this.layerList, {
             index: 1,
             position: this.layerListPosition
+          });
+        }
+
+        if (this.showSearch) {
+          this.searchProperties = {
+            view: this.mapView
+          };
+
+          this.search = new Search(this.searchProperties);
+
+          this.mapView.ui.add(this.search, {
+            index: 0,
+            position: this.searchPosition
           });
         }
 

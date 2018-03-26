@@ -36,14 +36,23 @@ describe('MapViewComponent', () => {
     expect(component.layerListPosition).toEqual(jasmine.any(String));
   });
 
+  it('show layer list has a default value', () => {
+    expect(component.showLayerList).toEqual(jasmine.any(Boolean));
+  });
+
+  it('search position has a default value', () => {
+    expect(component.searchPosition).toEqual(jasmine.any(String));
+  });
+
+  it('show search has a default value', () => {
+    expect(component.showSearch).toEqual(jasmine.any(Boolean));
+  });
+
   it('rotation has a default value', () => {
     expect(component.rotation).toBeGreaterThanOrEqual(0);
     expect(component.rotation).toBeLessThanOrEqual(360);
   });
 
-  it('show layer list property has a default value', () => {
-    expect(component.showLayerList).toEqual(jasmine.any(Boolean));
-  });
 
   it('webmap portal id has a default value', () => {
     expect(component.webMapPortalId).toEqual(jasmine.any(String));

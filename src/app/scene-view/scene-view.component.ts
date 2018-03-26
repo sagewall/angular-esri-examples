@@ -17,7 +17,11 @@ export class SceneViewComponent implements OnInit {
   private _layerListProperties: esri.LayerListProperties;
   private _sceneView: esri.SceneView;
   private _sceneViewProperties: esri.SceneViewProperties;
+  private _search: esri.Search;
+  private _searchPosition = 'top-left';
+  private _searchProperties: esri.SearchProperties;
   private _showLayerList = true;
+  private _showSearch = true;
   private _tilt = 45;
   private _webMap: esri.WebMap;
   private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
@@ -92,6 +96,31 @@ export class SceneViewComponent implements OnInit {
     return this._sceneViewProperties;
   }
 
+  set search(search: esri.Search) {
+    this._search = search;
+  }
+
+  get search() {
+    return this._search;
+  }
+
+  @Input()
+  set searchPosition(searchPosition: string) {
+    this._searchPosition = searchPosition;
+  }
+
+  get searchPosition() {
+    return this._searchPosition;
+  }
+
+  set searchProperties(searchProperties: esri.SearchProperties) {
+    this._searchProperties = searchProperties;
+  }
+
+  get searchProperties() {
+    return this._searchProperties;
+  }
+
   @Input()
   set showLayerList(showLayerList: boolean) {
     this._showLayerList = showLayerList;
@@ -99,6 +128,15 @@ export class SceneViewComponent implements OnInit {
 
   get showLayerList() {
     return this._showLayerList;
+  }
+
+  @Input()
+  set showSearch(showSearch: boolean) {
+    this._showSearch = showSearch;
+  }
+
+  get showSearch() {
+    return this._showSearch;
   }
 
   @Input()
@@ -155,11 +193,13 @@ export class SceneViewComponent implements OnInit {
   ngOnInit() {
     loadModules([
       'esri/widgets/LayerList',
+      'esri/widgets/Search',
       'esri/WebMap',
       'esri/views/SceneView'
     ])
       .then(([
                LayerList,
+               Search,
                WebMap,
                SceneView]) => {
         this.webMapProperties = {
@@ -189,6 +229,19 @@ export class SceneViewComponent implements OnInit {
           this.sceneView.ui.add(this.layerList, {
             index: 1,
             position: this.layerListPosition
+          });
+        }
+
+        if (this.showSearch) {
+          this.searchProperties = {
+            view: this.sceneView
+          };
+
+          this.search = new Search(this.searchProperties);
+
+          this.sceneView.ui.add(this.search, {
+            index: 0,
+            position: this.searchPosition
           });
         }
 
