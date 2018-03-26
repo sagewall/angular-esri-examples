@@ -14,6 +14,7 @@ export class SceneViewComponent implements OnInit {
   private _heading = 0;
   private _layerList: esri.LayerList;
   private _layerListPosition = 'top-right';
+  private _layerListProperties: esri.LayerListProperties;
   private _sceneView: esri.SceneView;
   private _sceneViewProperties: esri.SceneViewProperties;
   private _showLayerList = true;
@@ -65,6 +66,14 @@ export class SceneViewComponent implements OnInit {
 
   get layerListPosition() {
     return this._layerListPosition;
+  }
+
+  set layerListProperties(layerListProperties: esri.LayerListProperties) {
+    this._layerListProperties = layerListProperties;
+  }
+
+  get layerListProperties() {
+    return this._layerListProperties;
   }
 
   set sceneView(sceneView: esri.SceneView) {
@@ -171,9 +180,11 @@ export class SceneViewComponent implements OnInit {
         this.sceneView = new SceneView(this.sceneViewProperties);
 
         if (this.showLayerList) {
-          this.layerList = new LayerList({
+          this.layerListProperties = {
             view: this.sceneView
-          });
+          };
+
+          this.layerList = new LayerList(this.layerListProperties);
 
           this.sceneView.ui.add(this.layerList, {
             index: 1,

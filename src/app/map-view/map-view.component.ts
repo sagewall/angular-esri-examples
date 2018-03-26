@@ -12,6 +12,7 @@ export class MapViewComponent implements OnInit {
   private _center = [-105.25, 39.75];
   private _layerList: esri.LayerList;
   private _layerListPosition = 'top-right';
+  private _layerListProperties: esri.LayerListProperties;
   private _mapView: esri.MapView;
   private _mapViewProperties: esri.MapViewProperties;
   private _rotation = 0;
@@ -45,6 +46,14 @@ export class MapViewComponent implements OnInit {
 
   get layerListPosition() {
     return this._layerListPosition;
+  }
+
+  set layerListProperties(layerListProperties: esri.LayerListProperties) {
+    this._layerListProperties = layerListProperties;
+  }
+
+  get layerListProperties() {
+    return this._layerListProperties;
   }
 
   set mapView(mapView: esri.MapView) {
@@ -151,9 +160,11 @@ export class MapViewComponent implements OnInit {
         this.mapView = new MapView(this.mapViewProperties);
 
         if (this.showLayerList) {
-          this.layerList = new LayerList({
+          this.layerListProperties = {
             view: this.mapView
-          });
+          };
+
+          this.layerList = new LayerList(this.layerListProperties);
 
           this.mapView.ui.add(this.layerList, {
             index: 1,
