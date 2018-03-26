@@ -41,6 +41,11 @@ describe('SceneViewComponent', () => {
     expect(component.heading).toBeLessThanOrEqual(360);
   });
 
+  it('layer list position has a default value', () => {
+    expect(component.layerListPosition).toEqual(jasmine.any(String));
+  });
+
+
   it('tilt has a default value', () => {
     expect(component.tilt).toBeGreaterThanOrEqual(0);
     expect(component.tilt).toBeLessThanOrEqual(90);

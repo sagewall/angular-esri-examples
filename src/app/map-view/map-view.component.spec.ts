@@ -32,6 +32,10 @@ describe('MapViewComponent', () => {
     expect(component.center).toEqual(jasmine.any(Array));
   });
 
+  it('layer list position has a default value', () => {
+    expect(component.layerListPosition).toEqual(jasmine.any(String));
+  });
+
   it('rotation has a default value', () => {
     expect(component.rotation).toBeGreaterThanOrEqual(0);
     expect(component.rotation).toBeLessThanOrEqual(360);
