@@ -13,6 +13,7 @@ export class MapViewComponent implements OnInit {
   private _layerList: esri.LayerList;
   private _layerListPosition = 'top-right';
   private _mapView: esri.MapView;
+  private _mapViewProperties: esri.MapViewProperties;
   private _rotation = 0;
   private _webMap: esri.WebMap;
   private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
@@ -50,6 +51,14 @@ export class MapViewComponent implements OnInit {
 
   get mapView() {
     return this._mapView;
+  }
+
+  set mapViewProperties(mapViewProperties: esri.MapViewProperties) {
+    this._mapViewProperties = mapViewProperties;
+  }
+
+  get mapViewProperties() {
+    return this._mapViewProperties;
   }
 
   @Input()
@@ -113,14 +122,14 @@ export class MapViewComponent implements OnInit {
 
         this.webMap = new WebMap(webMapProperties);
 
-        const mapViewProperties: esri.MapViewProperties = {
+        this.mapViewProperties = {
           container: this.mapViewNodeElementRef.nativeElement,
           center: this.center,
           rotation: this.rotation,
           zoom: this.zoom,
           map: this.webMap
         };
-        this.mapView = new MapView(mapViewProperties);
+        this.mapView = new MapView(this.mapViewProperties);
 
         this.layerList = new LayerList({
           view: this.mapView
