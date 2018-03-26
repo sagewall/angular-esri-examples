@@ -15,6 +15,7 @@ export class MapViewComponent implements OnInit {
   private _mapView: esri.MapView;
   private _mapViewProperties: esri.MapViewProperties;
   private _rotation = 0;
+  private _showLayerList = true;
   private _webMap: esri.WebMap;
   private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
   private _webMapProperties: esri.WebMapProperties;
@@ -69,6 +70,15 @@ export class MapViewComponent implements OnInit {
 
   get rotation() {
     return this._rotation;
+  }
+
+  @Input()
+  set showLayerList(showLayerList: boolean) {
+    this._showLayerList = showLayerList;
+  }
+
+  get showLayerList() {
+    return this._showLayerList;
   }
 
   set webMap(webMap: esri.WebMap) {
@@ -140,14 +150,16 @@ export class MapViewComponent implements OnInit {
         };
         this.mapView = new MapView(this.mapViewProperties);
 
-        this.layerList = new LayerList({
-          view: this.mapView
-        });
+        if (this.showLayerList) {
+          this.layerList = new LayerList({
+            view: this.mapView
+          });
 
-        this.mapView.ui.add(this.layerList, {
-          index: 1,
-          position: this.layerListPosition
-        });
+          this.mapView.ui.add(this.layerList, {
+            index: 1,
+            position: this.layerListPosition
+          });
+        }
 
         this.mapView.when(() => {
           // All the resources in the MapView and the map have loaded. Now execute additional processes

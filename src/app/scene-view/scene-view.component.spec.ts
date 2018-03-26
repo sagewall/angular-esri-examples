@@ -45,6 +45,9 @@ describe('SceneViewComponent', () => {
     expect(component.layerListPosition).toEqual(jasmine.any(String));
   });
 
+  it('show layer list property has a default value', () => {
+    expect(component.showLayerList).toEqual(jasmine.any(Boolean));
+  });
 
   it('tilt has a default value', () => {
     expect(component.tilt).toBeGreaterThanOrEqual(0);

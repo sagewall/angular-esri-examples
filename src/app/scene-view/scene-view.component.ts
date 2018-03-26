@@ -16,6 +16,7 @@ export class SceneViewComponent implements OnInit {
   private _layerListPosition = 'top-right';
   private _sceneView: esri.SceneView;
   private _sceneViewProperties: esri.SceneViewProperties;
+  private _showLayerList = true;
   private _tilt = 45;
   private _webMap: esri.WebMap;
   private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
@@ -80,6 +81,15 @@ export class SceneViewComponent implements OnInit {
 
   get sceneViewProperties() {
     return this._sceneViewProperties;
+  }
+
+  @Input()
+  set showLayerList(showLayerList: boolean) {
+    this._showLayerList = showLayerList;
+  }
+
+  get showLayerList() {
+    return this._showLayerList;
   }
 
   @Input()
@@ -160,14 +170,16 @@ export class SceneViewComponent implements OnInit {
         };
         this.sceneView = new SceneView(this.sceneViewProperties);
 
-        this.layerList = new LayerList({
-          view: this.sceneView
-        });
+        if (this.showLayerList) {
+          this.layerList = new LayerList({
+            view: this.sceneView
+          });
 
-        this.sceneView.ui.add(this.layerList, {
-          index: 1,
-          position: this.layerListPosition
-        });
+          this.sceneView.ui.add(this.layerList, {
+            index: 1,
+            position: this.layerListPosition
+          });
+        }
 
         this.sceneView.when(() => {
           // All the resources in the MapView and the map have loaded. Now execute additional processes

@@ -41,6 +41,10 @@ describe('MapViewComponent', () => {
     expect(component.rotation).toBeLessThanOrEqual(360);
   });
 
+  it('show layer list property has a default value', () => {
+    expect(component.showLayerList).toEqual(jasmine.any(Boolean));
+  });
+
   it('webmap portal id has a default value', () => {
     expect(component.webMapPortalId).toEqual(jasmine.any(String));
   });
