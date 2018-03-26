@@ -15,6 +15,7 @@ export class SceneViewComponent implements OnInit {
   private _layerList: esri.LayerList;
   private _layerListPosition = 'top-right';
   private _sceneView: esri.SceneView;
+  private _sceneViewProperties: esri.SceneViewProperties;
   private _tilt = 45;
   private _webMap: esri.WebMap;
   private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
@@ -70,6 +71,14 @@ export class SceneViewComponent implements OnInit {
 
   get sceneView() {
     return this._sceneView;
+  }
+
+  set sceneViewProperties(sceneViewProperties: esri.SceneViewProperties) {
+    this._sceneViewProperties = sceneViewProperties;
+  }
+
+  get sceneViewProperties() {
+    return this._sceneViewProperties;
   }
 
   @Input()
@@ -134,13 +143,13 @@ export class SceneViewComponent implements OnInit {
 
         this.webMap = new WebMap(webMapProperties);
 
-        const sceneViewProperties: esri.SceneViewProperties = {
+        this.sceneViewProperties = {
           container: this.sceneViewNodeElementRef.nativeElement,
           center: this.center,
           zoom: this.zoom,
           map: this.webMap
         };
-        this.sceneView = new SceneView(sceneViewProperties);
+        this.sceneView = new SceneView(this.sceneViewProperties);
 
         this.layerList = new LayerList({
           view: this.sceneView
