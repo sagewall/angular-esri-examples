@@ -19,6 +19,7 @@ export class SceneViewComponent implements OnInit {
   private _tilt = 45;
   private _webMap: esri.WebMap;
   private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
+  private _webMapProperties: esri.WebMapProperties;
   private _zoom = 12;
 
   @Input()
@@ -107,6 +108,14 @@ export class SceneViewComponent implements OnInit {
     return this._webMapPortalId;
   }
 
+  set webMapProperties(webMapProperties: esri.WebMapProperties) {
+    this._webMapProperties = webMapProperties;
+  }
+
+  get webMapProperties() {
+    return this._webMapProperties;
+  }
+
   @Input()
   set zoom(zoom: number) {
     this._zoom = zoom;
@@ -134,14 +143,14 @@ export class SceneViewComponent implements OnInit {
                LayerList,
                WebMap,
                SceneView]) => {
-        const webMapProperties: esri.WebMapProperties = {
+        this.webMapProperties = {
           portalItem: {
             id: this.webMapPortalId
           },
           ground: this.ground
         };
 
-        this.webMap = new WebMap(webMapProperties);
+        this.webMap = new WebMap(this.webMapProperties);
 
         this.sceneViewProperties = {
           container: this.sceneViewNodeElementRef.nativeElement,

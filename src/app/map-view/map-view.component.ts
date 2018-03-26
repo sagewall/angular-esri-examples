@@ -17,6 +17,7 @@ export class MapViewComponent implements OnInit {
   private _rotation = 0;
   private _webMap: esri.WebMap;
   private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
+  private _webMapProperties: esri.WebMapProperties;
   private _zoom = 12;
 
   @Input()
@@ -87,6 +88,14 @@ export class MapViewComponent implements OnInit {
     return this._webMapPortalId;
   }
 
+  set webMapProperties(webMapProperties: esri.WebMapProperties) {
+    this._webMapProperties = webMapProperties;
+  }
+
+  get webMapProperties() {
+    return this._webMapProperties;
+  }
+
   @Input()
   set zoom(zoom: number) {
     this._zoom = zoom;
@@ -114,13 +123,13 @@ export class MapViewComponent implements OnInit {
                LayerList,
                WebMap,
                MapView]) => {
-        const webMapProperties: esri.WebMapProperties = {
+        this.webMapProperties = {
           portalItem: {
             id: this.webMapPortalId
           }
         };
 
-        this.webMap = new WebMap(webMapProperties);
+        this.webMap = new WebMap(this.webMapProperties);
 
         this.mapViewProperties = {
           container: this.mapViewNodeElementRef.nativeElement,
