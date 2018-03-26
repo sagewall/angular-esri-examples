@@ -12,6 +12,8 @@ export class SceneViewComponent implements OnInit {
   private _center = [-105.25, 39.75];
   private _ground = 'world-elevation';
   private _heading = 0;
+  private _layerList: esri.LayerList;
+  private _layerListPosition = 'top-right';
   private _sceneView: esri.SceneView;
   private _tilt = 45;
   private _webMap: esri.WebMap;
@@ -43,6 +45,23 @@ export class SceneViewComponent implements OnInit {
 
   get heading() {
     return this._heading;
+  }
+
+  set layerList(layerList: esri.LayerList) {
+    this._layerList = layerList;
+  }
+
+  get layerList() {
+    return this._layerList;
+  }
+
+  @Input()
+  set layerListPosition(layerListPosition: string) {
+    this._layerListPosition = layerListPosition;
+  }
+
+  get layerListPosition() {
+    return this._layerListPosition;
   }
 
   set sceneView(sceneView: esri.SceneView) {
@@ -98,10 +117,14 @@ export class SceneViewComponent implements OnInit {
 
   ngOnInit() {
     loadModules([
+      'esri/widgets/LayerList',
       'esri/WebMap',
       'esri/views/SceneView'
     ])
-      .then(([WebMap, SceneView]) => {
+      .then(([
+               LayerList,
+               WebMap,
+               SceneView]) => {
         const webMapProperties: esri.WebMapProperties = {
           portalItem: {
             id: this.webMapPortalId
@@ -118,6 +141,15 @@ export class SceneViewComponent implements OnInit {
           map: this.webMap
         };
         this.sceneView = new SceneView(sceneViewProperties);
+
+        this.layerList = new LayerList({
+          view: this.sceneView
+        });
+
+        this.sceneView.ui.add(this.layerList, {
+          index: 1,
+          position: this.layerListPosition
+        });
 
         this.sceneView.when(() => {
           // All the resources in the MapView and the map have loaded. Now execute additional processes

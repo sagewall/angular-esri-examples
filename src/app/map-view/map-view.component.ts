@@ -10,6 +10,8 @@ import esri = __esri;
 export class MapViewComponent implements OnInit {
 
   private _center = [-105.25, 39.75];
+  private _layerList: esri.LayerList;
+  private _layerListPosition = 'top-right';
   private _mapView: esri.MapView;
   private _rotation = 0;
   private _webMap: esri.WebMap;
@@ -23,6 +25,23 @@ export class MapViewComponent implements OnInit {
 
   get center() {
     return this._center;
+  }
+
+  set layerList(layerList: esri.LayerList) {
+    this._layerList = layerList;
+  }
+
+  get layerList() {
+    return this._layerList;
+  }
+
+  @Input()
+  set layerListPosition(layerListPosition: string) {
+    this._layerListPosition = layerListPosition;
+  }
+
+  get layerListPosition() {
+    return this._layerListPosition;
   }
 
   set mapView(mapView: esri.MapView) {
@@ -78,10 +97,14 @@ export class MapViewComponent implements OnInit {
 
   ngOnInit() {
     loadModules([
+      'esri/widgets/LayerList',
       'esri/WebMap',
       'esri/views/MapView'
     ])
-      .then(([WebMap, MapView]) => {
+      .then(([
+               LayerList,
+               WebMap,
+               MapView]) => {
         const webMapProperties: esri.WebMapProperties = {
           portalItem: {
             id: this.webMapPortalId
@@ -98,6 +121,15 @@ export class MapViewComponent implements OnInit {
           map: this.webMap
         };
         this.mapView = new MapView(mapViewProperties);
+
+        this.layerList = new LayerList({
+          view: this.mapView
+        });
+
+        this.mapView.ui.add(this.layerList, {
+          index: 1,
+          position: this.layerListPosition
+        });
 
         this.mapView.when(() => {
           // All the resources in the MapView and the map have loaded. Now execute additional processes
