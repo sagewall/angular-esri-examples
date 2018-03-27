@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MapViewComponent } from './map-view/map-view.component';
 import { SceneViewComponent } from './scene-view/scene-view.component';
 import { HistoricPlacesComponent } from './historic-places/historic-places.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { HistoricPlacesComponent } from './historic-places/historic-places.compo
     AppComponent,
     MapViewComponent,
     SceneViewComponent,
-    HistoricPlacesComponent
+    HistoricPlacesComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
