@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
+import { GalleryService } from './gallery.service';
+
 import { AppComponent } from './app.component';
 import { MapViewComponent } from './map-view/map-view.component';
 import { SceneViewComponent } from './scene-view/scene-view.component';
@@ -24,7 +26,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GalleryService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
