@@ -5,13 +5,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MapViewComponent } from './map-view/map-view.component';
 import { SceneViewComponent } from './scene-view/scene-view.component';
+import { HistoricPlacesComponent } from './historic-places/historic-places.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MapViewComponent,
-    SceneViewComponent
+    SceneViewComponent,
+    HistoricPlacesComponent
   ],
   imports: [
     BrowserModule
