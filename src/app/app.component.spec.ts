@@ -1,4 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
 import { HistoricPlacesComponent } from './historic-places/historic-places.component';
 import { MapViewComponent } from './map-view/map-view.component';
@@ -14,6 +16,9 @@ describe('AppComponent', () => {
         MapViewComponent,
         SceneViewComponent
       ],
+      imports: [
+        RouterTestingModule
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
