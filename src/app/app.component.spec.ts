@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HistoricPlacesComponent } from './historic-places/historic-places.component';
 import { MapViewComponent } from './map-view/map-view.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { SceneViewComponent } from './scene-view/scene-view.component';
 
 
@@ -16,6 +17,7 @@ describe('AppComponent', () => {
         HeaderComponent,
         HistoricPlacesComponent,
         MapViewComponent,
+        NavigationComponent,
         SceneViewComponent
       ],
       imports: [
