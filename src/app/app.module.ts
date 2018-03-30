@@ -12,6 +12,7 @@ import { HistoricPlacesComponent } from './historic-places/historic-places.compo
 import { GalleryComponent } from './gallery/gallery.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { GalleryItemComponent } from './gallery-item/gallery-item.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     HistoricPlacesComponent,
     GalleryComponent,
     HeaderComponent,
-    NavigationComponent
+    NavigationComponent,
+    GalleryItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,8 @@
-<p>
-  gallery works!
-</p>
+<section>
+  <div class="container">
+    <div *ngFor="let galleryItem of galleryItems">
+      <app-gallery-item [galleryItem]="galleryItem"></app-gallery-item>
+    </div>
+  </div>
+</section>
+
