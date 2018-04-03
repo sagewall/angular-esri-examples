@@ -1,9 +1,10 @@
-<p>
-  historic-places works!
-</p>
-<div class="map-container">
-  <app-map-view></app-map-view>
-</div>
-<div class="map-container">
-  <app-scene-view></app-scene-view>
+<div class="container">
+  <div class="map-container">
+    <h3>Map View</h3>
+    <app-map-view [showSearch]="false" [showLayerList]="false"></app-map-view>
+  </div>
+  <div class="map-container">
+    <h3>Scene View</h3>
+    <app-scene-view [showSearch]="false" [showLayerList]="false" [center]></app-scene-view>
+  </div>
 </div>
