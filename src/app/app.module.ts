@@ -13,6 +13,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { GalleryItemComponent } from './gallery-item/gallery-item.component';
+import { RouteMapViewBasicComponent } from './route-map-view-basic/route-map-view-basic.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { GalleryItemComponent } from './gallery-item/gallery-item.component';
     GalleryComponent,
     HeaderComponent,
     NavigationComponent,
-    GalleryItemComponent
+    GalleryItemComponent,
+    RouteMapViewBasicComponent
   ],
   imports: [
     BrowserModule,
