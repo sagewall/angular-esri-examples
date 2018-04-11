@@ -14,6 +14,13 @@ export class GalleryService {
       routerLink: '/map-view-basic',
       thumbnail: 'assets/route-map-view-basic-thumbnail.png',
       altText: 'Thumbnail image of the map view basic map'
+    },
+    {
+      name: 'Scene View (Basic)',
+      description: 'Example on using the scene view component.',
+      routerLink: '/scene-view-basic',
+      thumbnail: 'assets/route-scene-view-basic-thumbnail.png',
+      altText: 'Thumbnail image of the scene view basic map'
     }
   ];
 
