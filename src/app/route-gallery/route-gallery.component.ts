@@ -4,10 +4,10 @@ import { GalleryItem } from '../gallery-item';
 
 @Component({
   selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.sass']
+  templateUrl: './route-gallery.component.html',
+  styleUrls: ['./route-gallery.component.sass']
 })
-export class GalleryComponent implements OnInit {
+export class RouteGalleryComponent implements OnInit {
 
   private _galleryItems: GalleryItem[];
 

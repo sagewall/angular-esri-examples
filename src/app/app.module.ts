@@ -8,7 +8,7 @@ import { GalleryService } from './gallery.service';
 import { AppComponent } from './app.component';
 import { MapViewComponent } from './map-view/map-view.component';
 import { SceneViewComponent } from './scene-view/scene-view.component';
-import { GalleryComponent } from './gallery/gallery.component';
+import { RouteGalleryComponent } from './route-gallery/route-gallery.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { GalleryItemComponent } from './gallery-item/gallery-item.component';
@@ -20,7 +20,7 @@ import { RouteMapViewBasicComponent } from './route-map-view-basic/route-map-vie
     AppComponent,
     MapViewComponent,
     SceneViewComponent,
-    GalleryComponent,
+    RouteGalleryComponent,
     HeaderComponent,
     NavigationComponent,
     GalleryItemComponent,

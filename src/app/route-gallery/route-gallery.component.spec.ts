@@ -3,17 +3,17 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { GalleryService } from '../gallery.service';
 
-import { GalleryComponent } from './gallery.component';
+import { RouteGalleryComponent } from './route-gallery.component';
 import { GalleryItemComponent } from '../gallery-item/gallery-item.component';
 
-describe('GalleryComponent', () => {
-  let component: GalleryComponent;
-  let fixture: ComponentFixture<GalleryComponent>;
+describe('RouteGalleryComponent', () => {
+  let component: RouteGalleryComponent;
+  let fixture: ComponentFixture<RouteGalleryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        GalleryComponent,
+        RouteGalleryComponent,
         GalleryItemComponent
       ],
       providers: [GalleryService],
@@ -23,7 +23,7 @@ describe('GalleryComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GalleryComponent);
+    fixture = TestBed.createComponent(RouteGalleryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
