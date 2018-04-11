@@ -6,10 +6,10 @@ import { RouteMapViewBasicComponent } from '../route-map-view-basic/route-map-vi
 import { RouteSceneViewBasicComponent } from '../route-scene-view-basic/route-scene-view-basic.component';
 
 const appRoutes: Routes = [
-  { path: 'route-gallery', component: RouteGalleryComponent},
+  { path: 'gallery', component: RouteGalleryComponent},
   { path: 'map-view-basic', component: RouteMapViewBasicComponent },
   { path: 'scene-view-basic', component: RouteSceneViewBasicComponent },
-  { path: '', redirectTo: '/route-gallery', pathMatch: 'full'},
+  { path: '', redirectTo: '/gallery', pathMatch: 'full'},
   { path: '**', component: RouteGalleryComponent}
 ];
 
