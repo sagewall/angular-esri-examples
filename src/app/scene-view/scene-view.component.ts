@@ -24,7 +24,7 @@ export class SceneViewComponent implements OnInit {
   private _showSearch = true;
   private _tilt = 45;
   private _webMap: esri.WebMap;
-  private _webMapPortalId = 'c80397f52b0c48ab86c9768d08e8be69';
+  private _webMapPortalId = '7ebde07ed9b945d9be8c70aeced18b96';
   private _webMapProperties: esri.WebMapProperties;
   private _zoom = 12;
 
