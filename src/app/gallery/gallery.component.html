@@ -1,6 +1,6 @@
 <section>
   <div class="container">
-    <div *ngFor="let galleryItem of galleryItems">
+    <div class="gallery-item-container" *ngFor="let galleryItem of galleryItems">
       <app-gallery-item [galleryItem]="galleryItem"></app-gallery-item>
     </div>
   </div>
