@@ -14,6 +14,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { GalleryItemComponent } from './gallery-item/gallery-item.component';
 import { RouteMapViewBasicComponent } from './route-map-view-basic/route-map-view-basic.component';
 import { RouteSceneViewBasicComponent } from './route-scene-view-basic/route-scene-view-basic.component';
+import { RouteAddressSearchComponent } from './route-address-search/route-address-search.component';
+import { AddressSearchComponent } from './address-search/address-search.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { RouteSceneViewBasicComponent } from './route-scene-view-basic/route-sce
     NavigationComponent,
     GalleryItemComponent,
     RouteMapViewBasicComponent,
-    RouteSceneViewBasicComponent
+    RouteSceneViewBasicComponent,
+    RouteAddressSearchComponent,
+    AddressSearchComponent
   ],
   imports: [
     BrowserModule,

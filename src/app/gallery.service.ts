@@ -9,6 +9,13 @@ export class GalleryService {
 
   public galleryItems: GalleryItem[] = [
     {
+      name: 'Address Search',
+      description: 'Example on using the search widget.',
+      routerLink: '/address-search',
+      thumbnail: 'assets/route-map-view-basic-thumbnail.png',
+      altText: 'Thumbnail image of the address search map'
+    },
+    {
       name: 'Map View (Basic)',
       description: 'Example on using the map view component.',
       routerLink: '/map-view-basic',
