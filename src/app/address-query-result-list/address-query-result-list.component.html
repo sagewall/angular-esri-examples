@@ -2,7 +2,7 @@
   <li *ngFor="let address of addresses">
     <app-address-query-result #addressQueryResult
                               [address]="address"
-                              (click)="clickHandler(address)">
+                              (click)="selectAddress(address)">
     </app-address-query-result>
   </li>
 </ul>

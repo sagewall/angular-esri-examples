@@ -37,7 +37,7 @@ export class AddressQueryResultListComponent implements OnInit {
   ngOnInit() {
   }
 
-  clickHandler(address: Address) {
+  selectAddress(address: Address) {
     this.selectedAddress = address;
     this.selectedAddressEventEmitter.emit(this.selectedAddress);
   }
