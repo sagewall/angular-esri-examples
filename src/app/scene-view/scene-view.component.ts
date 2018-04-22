@@ -182,7 +182,7 @@ export class SceneViewComponent implements OnInit {
     return this._zoom;
   }
 
-  @Output() mapLoaded = new EventEmitter<boolean>();
+  @Output() sceneLoaded = new EventEmitter<boolean>();
 
   @ViewChild('sceneViewNode')
   private sceneViewNodeElementRef: ElementRef;
@@ -247,7 +247,7 @@ export class SceneViewComponent implements OnInit {
 
         this.sceneView.when(() => {
           // All the resources in the MapView and the map have loaded. Now execute additional processes
-          this.mapLoaded.emit(true);
+          this.sceneLoaded.emit(true);
           this.sceneView.goTo({
             heading: this.heading,
             tilt: this.tilt

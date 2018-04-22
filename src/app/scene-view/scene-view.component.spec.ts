@@ -72,8 +72,8 @@ describe('SceneViewComponent', () => {
     expect(component.zoom).toBeLessThanOrEqual(24);
   });
 
-  it('mapLoaded event fired', (done) => {
-    component.mapLoaded.subscribe(g => {
+  it('sceneLoaded event fired', (done) => {
+    component.sceneLoaded.subscribe(g => {
       expect(g).toBeTruthy();
       done();
     });
