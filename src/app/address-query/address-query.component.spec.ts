@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddressQueryComponent } from './address-query.component';
 import { AddressService } from '../address.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AddressQueryResultListComponent } from '../address-query-result-list/address-query-result-list.component';
 
 describe('AddressQueryComponent', () => {
   let component: AddressQueryComponent;
@@ -10,7 +11,10 @@ describe('AddressQueryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AddressQueryComponent],
+      declarations: [
+        AddressQueryComponent,
+        AddressQueryResultListComponent
+      ],
       providers: [AddressService],
       imports: [HttpClientTestingModule]
     })

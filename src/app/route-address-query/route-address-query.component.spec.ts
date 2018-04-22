@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RouteAddressQueryComponent } from './route-address-query.component';
+import { AddressQueryComponent } from '../address-query/address-query.component';
+import { AddressQueryResultListComponent } from '../address-query-result-list/address-query-result-list.component';
+import { AddressService } from '../address.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('RouteAddressQueryComponent', () => {
   let component: RouteAddressQueryComponent;
@@ -8,9 +12,15 @@ describe('RouteAddressQueryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouteAddressQueryComponent ]
+      declarations: [
+        AddressQueryComponent,
+        AddressQueryResultListComponent,
+        RouteAddressQueryComponent
+      ],
+      providers: [AddressService],
+      imports: [HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
