@@ -14,7 +14,6 @@ describe('SceneViewComponent', () => {
   }));
 
   beforeEach(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
     fixture = TestBed.createComponent(SceneViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -72,10 +71,4 @@ describe('SceneViewComponent', () => {
     expect(component.zoom).toBeLessThanOrEqual(24);
   });
 
-  it('sceneLoaded event fired', (done) => {
-    component.sceneLoaded.subscribe(g => {
-      expect(g).toBeTruthy();
-      done();
-    });
-  });
 });
