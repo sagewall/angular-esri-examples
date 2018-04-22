@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddressQueryResultListComponent } from './address-query-result-list.component';
+import { AddressQueryResultComponent } from '../address-query-result/address-query-result.component';
 
 describe('AddressQueryResultListComponent', () => {
   let component: AddressQueryResultListComponent;
@@ -8,7 +9,10 @@ describe('AddressQueryResultListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AddressQueryResultListComponent]
+      declarations: [
+        AddressQueryResultComponent,
+        AddressQueryResultListComponent
+      ]
     })
       .compileComponents();
   }));

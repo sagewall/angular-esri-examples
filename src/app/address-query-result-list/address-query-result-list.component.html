@@ -1,5 +1,8 @@
 <ul *ngIf="addresses">
   <li *ngFor="let address of addresses">
-    {{address.ADDRESS}}
+    <app-address-query-result #addressQueryResult
+                              [address]="address"
+                              (click)="clickHandler(address)">
+    </app-address-query-result>
   </li>
 </ul>

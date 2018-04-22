@@ -1,3 +1,7 @@
 <label for="search-box">Search by House Number</label>
 <input #searchBox id="search-box" type="number" (keyup)="search(searchBox.value)"/>
-<app-address-query-result-list *ngIf="addresses" [addresses]="addresses"></app-address-query-result-list>
+<app-address-query-result-list
+  *ngIf="addresses"
+  [addresses]="addresses"
+  (selectedAddressEventEmitter)="onSelectedAddress($event)">
+</app-address-query-result-list>

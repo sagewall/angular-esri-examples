@@ -16,6 +16,7 @@ import esri = __esri;
 export class AddressQueryComponent implements OnInit {
 
   private _addresses: Address[] = [];
+  private _selectedAddress: Address;
   private _searchTerms = new Subject<string>();
   private _featureSet$: Observable<esri.FeatureSet>;
 
@@ -25,6 +26,14 @@ export class AddressQueryComponent implements OnInit {
 
   get addresses() {
     return this._addresses;
+  }
+
+  set selectedAddress(address: Address) {
+    this._selectedAddress = address;
+  }
+
+  get selectedAddress() {
+    return this._selectedAddress;
   }
 
   get searchTerms() {
@@ -61,6 +70,10 @@ export class AddressQueryComponent implements OnInit {
       }
     });
 
+  }
+
+  onSelectedAddress(address: Address) {
+    this.selectedAddress = address;
   }
 
 }

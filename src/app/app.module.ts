@@ -21,6 +21,7 @@ import { AddressService } from './address.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouteAddressQueryComponent } from './route-address-query/route-address-query.component';
 import { AddressQueryResultListComponent } from './address-query-result-list/address-query-result-list.component';
+import { AddressQueryResultComponent } from './address-query-result/address-query-result.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AddressQueryResultListComponent } from './address-query-result-list/add
     AddressSearchComponent,
     AddressQueryComponent,
     RouteAddressQueryComponent,
-    AddressQueryResultListComponent
+    AddressQueryResultListComponent,
+    AddressQueryResultComponent
   ],
   imports: [
     BrowserModule,
