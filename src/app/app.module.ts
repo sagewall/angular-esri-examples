@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouteAddressQueryComponent } from './route-address-query/route-address-query.component';
 import { AddressQueryResultListComponent } from './address-query-result-list/address-query-result-list.component';
 import { AddressQueryResultComponent } from './address-query-result/address-query-result.component';
+import { AddressDetailComponent } from './address-detail/address-detail.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AddressQueryResultComponent } from './address-query-result/address-quer
     AddressQueryComponent,
     RouteAddressQueryComponent,
     AddressQueryResultListComponent,
-    AddressQueryResultComponent
+    AddressQueryResultComponent,
+    AddressDetailComponent
   ],
   imports: [
     BrowserModule,

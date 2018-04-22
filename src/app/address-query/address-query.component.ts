@@ -64,6 +64,7 @@ export class AddressQueryComponent implements OnInit {
 
     this.featureSet$.subscribe(featureSet => {
       this.addresses = [];
+      this.selectedAddress = null;
       const features = featureSet['features'];
       if (features) {
         features.forEach(feature => this.addresses.push(feature['attributes']));

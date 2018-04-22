@@ -5,6 +5,7 @@ import { AddressService } from '../address.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AddressQueryResultListComponent } from '../address-query-result-list/address-query-result-list.component';
 import { AddressQueryResultComponent } from '../address-query-result/address-query-result.component';
+import { AddressDetailComponent } from '../address-detail/address-detail.component';
 
 describe('AddressQueryComponent', () => {
   let component: AddressQueryComponent;
@@ -13,6 +14,7 @@ describe('AddressQueryComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        AddressDetailComponent,
         AddressQueryComponent,
         AddressQueryResultComponent,
         AddressQueryResultListComponent
