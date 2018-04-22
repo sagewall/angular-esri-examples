@@ -16,6 +16,10 @@ import { RouteMapViewBasicComponent } from './route-map-view-basic/route-map-vie
 import { RouteSceneViewBasicComponent } from './route-scene-view-basic/route-scene-view-basic.component';
 import { RouteAddressSearchComponent } from './route-address-search/route-address-search.component';
 import { AddressSearchComponent } from './address-search/address-search.component';
+import { AddressQueryComponent } from './address-query/address-query.component';
+import { AddressService } from './address.service';
+import { HttpClientModule } from '@angular/common/http';
+import { RouteAddressQueryComponent } from './route-address-query/route-address-query.component';
 
 
 @NgModule({
@@ -30,13 +34,19 @@ import { AddressSearchComponent } from './address-search/address-search.componen
     RouteMapViewBasicComponent,
     RouteSceneViewBasicComponent,
     RouteAddressSearchComponent,
-    AddressSearchComponent
+    AddressSearchComponent,
+    AddressQueryComponent,
+    RouteAddressQueryComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [GalleryService],
+  providers: [
+    AddressService,
+    GalleryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

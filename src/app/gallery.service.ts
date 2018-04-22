@@ -9,6 +9,13 @@ export class GalleryService {
 
   public galleryItems: GalleryItem[] = [
     {
+      name: 'Address Query',
+      description: 'Example on using a arcgis rest api query and observables to create a search box.',
+      routerLink: '/address-query',
+      thumbnail: 'assets/route-address-query-thumbnail.png',
+      altText: 'Thumbnail image of the address query'
+    },
+    {
       name: 'Address Search',
       description: 'Example on using the search widget.',
       routerLink: '/address-search',

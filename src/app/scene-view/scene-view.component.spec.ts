@@ -14,7 +14,7 @@ describe('SceneViewComponent', () => {
   }));
 
   beforeEach(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
     fixture = TestBed.createComponent(SceneViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

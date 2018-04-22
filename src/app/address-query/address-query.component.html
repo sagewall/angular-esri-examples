@@ -1,0 +1,7 @@
+<label for="search-box">Search by House Number</label>
+<input #searchBox id="search-box" type="number" (keyup)="search(searchBox.value)"/>
+<ul *ngIf="addresses" >
+  <li *ngFor="let address of addresses">
+    {{address.ADDRESS}}
+  </li>
+</ul>
