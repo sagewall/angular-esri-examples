@@ -1,49 +1,59 @@
 <div *ngIf="address" #addressDetail class="address-details-container">
   <h3>{{address.ADDRESS}}</h3>
-  <ul>
-    <li>Address: {{address.ADDRESS}}</li>
-    <li>Type: {{address.ADDRESS_TYPE}}</li>
-    <li>Number: {{address.ADNO}}</li>
-    <li>House Number: {{address.ADRHSNO}}</li>
-    <li>House Number Suffix: {{address.ADRHSNOSFX}}</li>
-    <li>UID: {{address.ADRUID}}</li>
-    <li>Elevation: {{address.ADR_ELEVATION}}</li>
-    <li>Latitude: {{address.ADR_LATITUDE}}</li>
-    <li>Longitude: {{address.ADR_LONGITUDE}}</li>
-    <li>x: {{address.ADR_X}}</li>
-    <li>xy Metadata: {{address.ADR_XY_META}}</li>
-    <li>xy Metadata Description: {{address.ADR_XY_META_DESCRIPTION}}</li>
-    <li>y: {{address.ADR_Y}}</li>
-    <li>BLUID: {{address.BLUID}}</li>
-    <li>BPUID: {{address.BPUID}}</li>
-    <li>Municipality: {{address.CITY_MUNICIPAL}}</li>
-    <li>Postal City: {{address.CITY_POSTAL}}</li>
-    <li>City Precinct: {{address.CITY_PRECINCT}}</li>
-    <li>City Ward: {{address.CITY_WARD}}</li>
-    <li>Commissioner District: {{address.COMMISSIONER_DISTRICT}}</li>
-    <li>Commissioner Living in District: {{address.COMMISSIONER_LIVING_IN_DIST}}</li>
-    <li>County Precinct: {{address.COUNTY_PRECINCT}}</li>
-    <li>Date Added: {{address.DATE_ADD}}</li>
-    <li>Date Modified: {{address.DATE_MOD}}</li>
-    <li>US House District: {{address.FEDERAL_HOUSE_DISTRICT}}</li>
-    <li>US House Representative: {{address.FEDERAL_HOUSE_REPRESENTATIVE}}</li>
-    <li>ObjectID: {{address.OBJECTID}}</li>
-    <li>Priority PIN: {{address.PRIORITY_PIN}}</li>
-    <li>RSN: {{address.RSN}}</li>
-    <li>RTD: {{address.RTD}}</li>
-    <li>SJLID: {{address.SJLID}}</li>
-    <li>SPLIT: {{address.SPLIT}}</li>
-    <li>State House District: {{address.STATE_HOUSE_DISTRICT}}</li>
-    <li>State House Representative: {{address.STATE_HOUSE_REPRESENTATIVE}}</li>
-    <li>State Senate District: {{address.STATE_SENATE_DISTRICT}}</li>
-    <li>State Senator: {{address.STATE_SENATOR}}</li>
-    <li>Street Direction Prefix: {{address.STREET_DIRECTION_PREFIX}}</li>
-    <li>Street Direction Suffix: {{address.STREET_DIRECTION_SUFFIX}}</li>
-    <li>Street Name: {{address.STREET_NAME}}</li>
-    <li>Street Type: {{address.STREET_TYPE}}</li>
-    <li>SUBADRUID: {{address.SUBADRUID}}</li>
-    <li>SUBADRUNIT: {{address.SUBADRUNIT}}</li>
-    <li>TIFA: {{address.TIFA}}</li>
-    <li>ZIP: {{address.ZIP}}</li>
-  </ul>
+  <div class="map-container">
+    <app-map-view
+      [webMapPortalId]="'464d489525914296a95fb476251e416e'"
+      [showSearch]="false"
+      [showLayerList]="false"
+      [center]="center">
+    </app-map-view>
+  </div>
+  <div class="address-attribute-list-container">
+    <ul>
+      <li>Address: {{address.ADDRESS}}</li>
+      <li>Type: {{address.ADDRESS_TYPE}}</li>
+      <li>Number: {{address.ADNO}}</li>
+      <li>House Number: {{address.ADRHSNO}}</li>
+      <li>House Number Suffix: {{address.ADRHSNOSFX}}</li>
+      <li>UID: {{address.ADRUID}}</li>
+      <li>Elevation: {{address.ADR_ELEVATION}}</li>
+      <li>Latitude: {{address.ADR_LATITUDE}}</li>
+      <li>Longitude: {{address.ADR_LONGITUDE}}</li>
+      <li>x: {{address.ADR_X}}</li>
+      <li>xy Metadata: {{address.ADR_XY_META}}</li>
+      <li>xy Metadata Description: {{address.ADR_XY_META_DESCRIPTION}}</li>
+      <li>y: {{address.ADR_Y}}</li>
+      <li>BLUID: {{address.BLUID}}</li>
+      <li>BPUID: {{address.BPUID}}</li>
+      <li>Municipality: {{address.CITY_MUNICIPAL}}</li>
+      <li>Postal City: {{address.CITY_POSTAL}}</li>
+      <li>City Precinct: {{address.CITY_PRECINCT}}</li>
+      <li>City Ward: {{address.CITY_WARD}}</li>
+      <li>Commissioner District: {{address.COMMISSIONER_DISTRICT}}</li>
+      <li>Commissioner Living in District: {{address.COMMISSIONER_LIVING_IN_DIST}}</li>
+      <li>County Precinct: {{address.COUNTY_PRECINCT}}</li>
+      <li>Date Added: {{address.DATE_ADD}}</li>
+      <li>Date Modified: {{address.DATE_MOD}}</li>
+      <li>US House District: {{address.FEDERAL_HOUSE_DISTRICT}}</li>
+      <li>US House Representative: {{address.FEDERAL_HOUSE_REPRESENTATIVE}}</li>
+      <li>ObjectID: {{address.OBJECTID}}</li>
+      <li>Priority PIN: {{address.PRIORITY_PIN}}</li>
+      <li>RSN: {{address.RSN}}</li>
+      <li>RTD: {{address.RTD}}</li>
+      <li>SJLID: {{address.SJLID}}</li>
+      <li>SPLIT: {{address.SPLIT}}</li>
+      <li>State House District: {{address.STATE_HOUSE_DISTRICT}}</li>
+      <li>State House Representative: {{address.STATE_HOUSE_REPRESENTATIVE}}</li>
+      <li>State Senate District: {{address.STATE_SENATE_DISTRICT}}</li>
+      <li>State Senator: {{address.STATE_SENATOR}}</li>
+      <li>Street Direction Prefix: {{address.STREET_DIRECTION_PREFIX}}</li>
+      <li>Street Direction Suffix: {{address.STREET_DIRECTION_SUFFIX}}</li>
+      <li>Street Name: {{address.STREET_NAME}}</li>
+      <li>Street Type: {{address.STREET_TYPE}}</li>
+      <li>SUBADRUID: {{address.SUBADRUID}}</li>
+      <li>SUBADRUNIT: {{address.SUBADRUNIT}}</li>
+      <li>TIFA: {{address.TIFA}}</li>
+      <li>ZIP: {{address.ZIP}}</li>
+    </ul>
+  </div>
 </div>

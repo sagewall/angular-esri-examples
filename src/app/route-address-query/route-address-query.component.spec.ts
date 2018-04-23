@@ -7,6 +7,7 @@ import { AddressService } from '../address.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AddressQueryResultComponent } from '../address-query-result/address-query-result.component';
 import { AddressDetailComponent } from '../address-detail/address-detail.component';
+import { MapViewComponent } from '../map-view/map-view.component';
 
 describe('RouteAddressQueryComponent', () => {
   let component: RouteAddressQueryComponent;
@@ -19,6 +20,7 @@ describe('RouteAddressQueryComponent', () => {
         AddressQueryComponent,
         AddressQueryResultComponent,
         AddressQueryResultListComponent,
+        MapViewComponent,
         RouteAddressQueryComponent
       ],
       providers: [AddressService],
