@@ -19,6 +19,7 @@ export class MapViewComponent implements OnInit, OnChanges {
   private _search: esri.Search;
   private _searchPosition = 'top-left';
   private _searchProperties: esri.SearchProperties;
+  private _showCenterMarker = false;
   private _showLayerList = true;
   private _showSearch = true;
   private _webMap: esri.WebMap;
@@ -111,6 +112,15 @@ export class MapViewComponent implements OnInit, OnChanges {
   }
 
   @Input()
+  set showCenterMarker(showCenterMarker: boolean) {
+    this._showCenterMarker = showCenterMarker;
+  }
+
+  get showCenterMarker() {
+    return this._showCenterMarker;
+  }
+
+  @Input()
   set showLayerList(showLayerList: boolean) {
     this._showLayerList = showLayerList;
   }
@@ -183,16 +193,28 @@ export class MapViewComponent implements OnInit, OnChanges {
       url: 'https://js.arcgis.com/4.7/'
     };
     loadModules([
-      'esri/widgets/LayerList',
-      'esri/widgets/Search',
+      'esri/Graphic',
       'esri/WebMap',
-      'esri/views/MapView'
+      'esri/geometry/Point',
+      'esri/geometry/SpatialReference',
+      'esri/layers/GraphicsLayer',
+      'esri/symbols/SimpleMarkerSymbol',
+      'esri/views/MapView',
+      'esri/widgets/LayerList',
+      'esri/widgets/Search'
+
     ], options)
       .then(([
-               LayerList,
-               Search,
+               Graphic,
                WebMap,
-               MapView]) => {
+               Point,
+               SpatialReference,
+               GraphicsLayer,
+               SimpleMarkerSymbol,
+               MapView,
+               LayerList,
+               Search
+             ]) => {
         this.webMapProperties = {
           portalItem: {
             id: this.webMapPortalId
@@ -209,6 +231,44 @@ export class MapViewComponent implements OnInit, OnChanges {
           map: this.webMap
         };
         this.mapView = new MapView(this.mapViewProperties);
+
+        if (this.showCenterMarker) {
+          const spatialReferenceProperties: esri.SpatialReferenceProperties = {
+            wkid: 4326
+          };
+          const spatialReference: esri.SpatialReference = new SpatialReference(spatialReferenceProperties);
+
+          const pointProperties: esri.PointProperties = {
+            longitude: this.center[0],
+            latitude: this.center[1],
+            spatialReference: spatialReference
+          };
+          const point: esri.Point = new Point(pointProperties);
+
+          const simpleMarkerSymbolProperties: esri.SimpleMarkerSymbolProperties = {
+            style: 'circle',
+            color: [255, 255, 255, 0],
+            size: '10px',
+            outline: {
+              color: [255, 255, 255],
+              width: 1
+            }
+          };
+          const simpleMarkerSymbol: esri.SimpleMarkerSymbol = new SimpleMarkerSymbol(simpleMarkerSymbolProperties);
+
+          const graphicProperties: esri.GraphicProperties = {
+            geometry: point,
+            symbol: simpleMarkerSymbol
+          };
+          const graphic: esri.Graphic = new Graphic(graphicProperties);
+
+          const graphicsLayerProperties: esri.GraphicsLayerProperties = {
+            graphics: [graphic]
+          };
+          const graphicsLayer: esri.GraphicsLayer = new GraphicsLayer(graphicsLayerProperties);
+
+          this.mapView.map.add(graphicsLayer);
+        }
 
         if (this.showLayerList) {
           this.layerListProperties = {
