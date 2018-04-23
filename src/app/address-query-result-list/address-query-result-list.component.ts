@@ -9,8 +9,10 @@ import { Address } from '../address';
 })
 export class AddressQueryResultListComponent implements OnInit {
 
+
   private _addresses: Address[] = [];
   private _selectedAddress: Address;
+  private _selectedItem: number;
 
   @Input()
   set addresses(addresses: Address[]) {
@@ -29,6 +31,14 @@ export class AddressQueryResultListComponent implements OnInit {
     return this._selectedAddress;
   }
 
+  set selectedItem(selectedRow: number) {
+    this._selectedItem = selectedRow;
+  }
+
+  get selectedItem() {
+    return this._selectedItem;
+  }
+
   @Output() selectedAddressEventEmitter = new EventEmitter<Address>();
 
   constructor() {
@@ -37,9 +47,10 @@ export class AddressQueryResultListComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectAddress(address: Address) {
+  selectAddress(address: Address, index: number) {
     this.selectedAddress = address;
     this.selectedAddressEventEmitter.emit(this.selectedAddress);
+    this.selectedItem = index;
   }
 
 }

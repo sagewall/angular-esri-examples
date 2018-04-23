@@ -2,8 +2,9 @@
   <div class="search-box-container">
     <label for="search-box">Search by House Number</label>
     <input #searchBox id="search-box" type="number" (keyup)="search(searchBox.value)"/>
+  </div>
+  <div class="result-list-container">
     <div *ngIf="addresses.length > 0">
-      <div>Select an address to see additional details</div>
       <app-address-query-result-list
         [addresses]="addresses"
         (selectedAddressEventEmitter)="onSelectedAddress($event)">
