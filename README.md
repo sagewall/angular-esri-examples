@@ -1,4 +1,5 @@
-# AngularEsriExamples
+# Angular ESRI Examples
+This project is deployed to GitHub Pages at [angular-esri-examples](https://sagewall.github.io/angular-esri-examples/).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
