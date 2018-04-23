@@ -105,6 +105,9 @@ export class AddressSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    const options = {
+      url: 'https://js.arcgis.com/4.7/'
+    };
     loadModules([
       'esri/layers/FeatureLayer',
       'esri/widgets/LayerList',
@@ -112,7 +115,7 @@ export class AddressSearchComponent implements OnInit {
       'esri/widgets/Search',
       'esri/WebMap',
       'esri/views/MapView'
-    ])
+    ], options)
       .then(([
                FeatureLayer,
                LayerList,

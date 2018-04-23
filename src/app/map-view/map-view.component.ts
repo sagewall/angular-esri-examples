@@ -171,12 +171,15 @@ export class MapViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    const options = {
+      url: 'https://js.arcgis.com/4.7/'
+    };
     loadModules([
       'esri/widgets/LayerList',
       'esri/widgets/Search',
       'esri/WebMap',
       'esri/views/MapView'
-    ])
+    ], options)
       .then(([
                LayerList,
                Search,
