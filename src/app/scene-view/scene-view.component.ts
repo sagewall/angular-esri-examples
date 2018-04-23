@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { loadModules } from 'esri-loader';
 import esri = __esri;
 
@@ -7,7 +7,7 @@ import esri = __esri;
   templateUrl: './scene-view.component.html',
   styleUrls: ['./scene-view.component.sass']
 })
-export class SceneViewComponent implements OnInit {
+export class SceneViewComponent implements OnInit, OnChanges {
 
   private _center = [-105.25, 39.75];
   private _ground = 'world-elevation';
@@ -191,6 +191,14 @@ export class SceneViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.createSceneView();
+  }
+
+  ngOnChanges() {
+    this.createSceneView();
+  }
+
+  createSceneView() {
     const options = {
       url: 'https://js.arcgis.com/4.7/'
     };

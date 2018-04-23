@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { loadModules } from 'esri-loader';
 import esri = __esri;
 
@@ -7,7 +7,7 @@ import esri = __esri;
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.sass']
 })
-export class MapViewComponent implements OnInit {
+export class MapViewComponent implements OnInit, OnChanges {
 
   private _center = [-105.25, 39.75];
   private _layerList: esri.LayerList;
@@ -171,6 +171,14 @@ export class MapViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.createMapView();
+  }
+
+  ngOnChanges() {
+    this.createMapView();
+  }
+
+  createMapView() {
     const options = {
       url: 'https://js.arcgis.com/4.7/'
     };
