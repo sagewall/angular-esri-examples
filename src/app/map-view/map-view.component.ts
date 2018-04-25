@@ -10,9 +10,9 @@ import esri = __esri;
 })
 export class MapViewComponent implements OnInit, OnChanges {
 
+  private _center: esri.Point;
   private _esriLoaderOptions: object = {};
   private _feature: esri.Graphic | Address;
-  private _center: esri.Point;
   private _layerList: esri.LayerList;
   private _layerListPosition = 'top-right';
   private _layerListProperties: esri.LayerListProperties;
@@ -32,6 +32,14 @@ export class MapViewComponent implements OnInit, OnChanges {
   private _webMapProperties: esri.WebMapProperties;
   private _zoom = 12;
 
+  set center(center: esri.Point) {
+    this._center = center;
+  }
+
+  get center(): esri.Point {
+    return this._center;
+  }
+
   set esriLoaderOptions(esriLoaderOptions: object) {
     this._esriLoaderOptions = esriLoaderOptions;
   }
@@ -47,14 +55,6 @@ export class MapViewComponent implements OnInit, OnChanges {
 
   get feature(): esri.Graphic | Address {
     return this._feature;
-  }
-
-  set center(center: esri.Point) {
-    this._center = center;
-  }
-
-  get center(): esri.Point {
-    return this._center;
   }
 
   set layerList(layerList: esri.LayerList) {
@@ -331,10 +331,13 @@ export class MapViewComponent implements OnInit, OnChanges {
           const graphic: esri.Graphic = new Graphic(graphicProperties);
 
           const graphicsLayerProperties: esri.GraphicsLayerProperties = {
+            title: 'Target',
             graphics: [graphic]
           };
           const graphicsLayer: esri.GraphicsLayer = new GraphicsLayer(graphicsLayerProperties);
 
+          const targetLayer: esri.Layer = this.mapView.map.allLayers.find(layer => layer.title === 'Target');
+          this.mapView.map.remove(targetLayer);
           this.mapView.map.add(graphicsLayer);
         }
 

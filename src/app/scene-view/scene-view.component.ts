@@ -10,9 +10,9 @@ import { Address } from '../address';
 })
 export class SceneViewComponent implements OnInit, OnChanges {
 
+  private _center: esri.Point;
   private _esriLoaderOptions: object = {};
   private _feature: esri.Graphic | Address;
-  private _center: esri.Point;
   private _ground = 'world-elevation';
   private _heading = 0;
   private _layerList: esri.LayerList;
@@ -34,6 +34,14 @@ export class SceneViewComponent implements OnInit, OnChanges {
   private _webMapProperties: esri.WebMapProperties;
   private _zoom = 12;
 
+  set center(center: esri.Point) {
+    this._center = center;
+  }
+
+  get center(): esri.Point {
+    return this._center;
+  }
+
   set esriLoaderOptions(esriLoaderOptions: object) {
     this._esriLoaderOptions = esriLoaderOptions;
   }
@@ -49,14 +57,6 @@ export class SceneViewComponent implements OnInit, OnChanges {
 
   get feature(): esri.Graphic | Address {
     return this._feature;
-  }
-
-  set center(center: esri.Point) {
-    this._center = center;
-  }
-
-  get center(): esri.Point {
-    return this._center;
   }
 
   @Input()
@@ -348,10 +348,13 @@ export class SceneViewComponent implements OnInit, OnChanges {
           const graphic: esri.Graphic = new Graphic(graphicProperties);
 
           const graphicsLayerProperties: esri.GraphicsLayerProperties = {
+            title: 'Target',
             graphics: [graphic]
           };
           const graphicsLayer: esri.GraphicsLayer = new GraphicsLayer(graphicsLayerProperties);
 
+          const targetLayer: esri.Layer = this.sceneView.map.allLayers.find(layer => layer.title === 'Target');
+          this.sceneView.map.remove(targetLayer);
           this.sceneView.map.add(graphicsLayer);
         }
 
