@@ -28,10 +28,6 @@ describe('SceneViewComponent', () => {
     expect(compiled.querySelector('sceneViewNode')).toBeDefined();
   });
 
-  it('center has a default value', () => {
-    expect(component.center).toEqual(jasmine.any(Array));
-  });
-
   it('ground has a default value', () => {
     expect(component.ground).toEqual(jasmine.any(String));
   });
