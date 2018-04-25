@@ -7,6 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AddressQueryResultComponent } from '../address-query-result/address-query-result.component';
 import { AddressDetailComponent } from '../address-detail/address-detail.component';
 import { MapViewComponent } from '../map-view/map-view.component';
+import { AddressAttributesComponent } from '../address-attributes/address-attributes.component';
 
 describe('RouteAddressQueryComponent', () => {
   let component: RouteAddressQueryComponent;
@@ -15,6 +16,7 @@ describe('RouteAddressQueryComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        AddressAttributesComponent,
         AddressDetailComponent,
         AddressQueryComponent,
         AddressQueryResultComponent,

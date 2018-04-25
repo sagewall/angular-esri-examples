@@ -6,6 +6,7 @@ import { AddressQueryResultListComponent } from '../address-query-result-list/ad
 import { AddressQueryResultComponent } from '../address-query-result/address-query-result.component';
 import { AddressDetailComponent } from '../address-detail/address-detail.component';
 import { MapViewComponent } from '../map-view/map-view.component';
+import { AddressAttributesComponent } from '../address-attributes/address-attributes.component';
 
 describe('AddressQueryComponent', () => {
   let component: AddressQueryComponent;
@@ -14,6 +15,7 @@ describe('AddressQueryComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        AddressAttributesComponent,
         AddressDetailComponent,
         AddressQueryComponent,
         AddressQueryResultComponent,

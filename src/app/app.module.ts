@@ -20,6 +20,7 @@ import { RouteAddressQueryComponent } from './route-address-query/route-address-
 import { AddressQueryResultListComponent } from './address-query-result-list/address-query-result-list.component';
 import { AddressQueryResultComponent } from './address-query-result/address-query-result.component';
 import { AddressDetailComponent } from './address-detail/address-detail.component';
+import { AddressAttributesComponent } from './address-attributes/address-attributes.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AddressDetailComponent } from './address-detail/address-detail.componen
     RouteAddressQueryComponent,
     AddressQueryResultListComponent,
     AddressQueryResultComponent,
-    AddressDetailComponent
+    AddressDetailComponent,
+    AddressAttributesComponent
   ],
   imports: [
     BrowserModule,

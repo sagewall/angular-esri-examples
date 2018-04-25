@@ -1,14 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AddressDetailComponent } from './address-detail.component';
-import { MapViewComponent } from '../map-view/map-view.component';
+import { AddressAttributesComponent } from './address-attributes.component';
 import { Address } from '../address';
-import { AddressAttributesComponent } from '../address-attributes/address-attributes.component';
 
-describe('AddressDetailComponent', () => {
-  let component: AddressDetailComponent;
-  let fixture: ComponentFixture<AddressDetailComponent>;
+describe('AddressAttributesComponent', () => {
+  let component: AddressAttributesComponent;
+  let fixture: ComponentFixture<AddressAttributesComponent>;
 
-  const feature: Address = {
+  const address: Address = {
     'attributes': {
       'OBJECTID': 202143,
       'ADNO': 121984,
@@ -57,22 +55,17 @@ describe('AddressDetailComponent', () => {
     }, 'geometry': {'x': -11732687.8949, 'y': 4790717.457000002}
   };
 
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AddressAttributesComponent,
-        AddressDetailComponent,
-        MapViewComponent
-      ]
+      declarations: [AddressAttributesComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddressDetailComponent);
+    fixture = TestBed.createComponent(AddressAttributesComponent);
     component = fixture.componentInstance;
-    component.feature = feature;
+    component.address = address;
     fixture.detectChanges();
   });
 
