@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { Address } from '../address';
+import esri = __esri;
 
 @Component({
   selector: 'app-address-query-result',
@@ -9,15 +9,15 @@ import { Address } from '../address';
 })
 export class AddressQueryResultComponent implements OnInit {
 
-  private _address: Address;
+  private _feature: esri.Graphic | Address;
 
   @Input()
-  set address(address: Address) {
-    this._address = address;
+  set feature(feature: esri.Graphic | Address) {
+    this._feature = feature;
   }
 
-  get address() {
-    return this._address;
+  get feature(): esri.Graphic | Address {
+    return this._feature;
   }
 
   constructor() {

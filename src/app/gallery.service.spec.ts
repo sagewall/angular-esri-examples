@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { GalleryService } from './gallery.service';
 
 describe('GalleryService', () => {

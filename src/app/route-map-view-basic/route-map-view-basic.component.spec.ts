@@ -1,5 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouteMapViewBasicComponent } from './route-map-view-basic.component';
 import { MapViewComponent } from '../map-view/map-view.component';
 

@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MapViewComponent } from './map-view.component';
 
 describe('MapViewComponent', () => {
@@ -26,10 +25,6 @@ describe('MapViewComponent', () => {
   it('should create MapView', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('mapViewNode')).toBeDefined();
-  });
-
-  it('center has a default value', () => {
-    expect(component.center).toEqual(jasmine.any(Array));
   });
 
   it('layer list position has a default value', () => {

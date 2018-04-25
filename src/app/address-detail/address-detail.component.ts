@@ -1,43 +1,29 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
 import { Address } from '../address';
+import esri = __esri;
 
 @Component({
   selector: 'app-address-detail',
   templateUrl: './address-detail.component.html',
   styleUrls: ['./address-detail.component.sass']
 })
-export class AddressDetailComponent implements OnInit, OnChanges {
+export class AddressDetailComponent implements OnInit {
 
-  private _address: Address;
-  private _center = [-104.25, 39.75];
+  private _feature: esri.Graphic | Address;
 
   @Input()
-  set address(address: Address) {
-    this._address = address;
+  set feature(feature: esri.Graphic | Address) {
+    this._feature = feature;
   }
 
-  get address() {
-    return this._address;
-  }
-
-  set center(center: number[]) {
-    this._center = center;
-  }
-
-  get center() {
-    return this._center;
+  get feature(): esri.Graphic | Address {
+    return this._feature;
   }
 
   constructor() {
   }
 
   ngOnInit() {
-    this.center = [-this.address.ADR_LONGITUDE, this.address.ADR_LATITUDE];
-  }
-
-  ngOnChanges() {
-    this.center = [-this.address.ADR_LONGITUDE, this.address.ADR_LATITUDE];
   }
 
 }

@@ -26,15 +26,11 @@ export class AddressSearchComponent implements OnInit {
     this._address = address;
   }
 
-  get address() {
+  get address(): Address {
     return this._address;
   }
 
-  set center(center: number[]) {
-    this._center = center;
-  }
-
-  get center() {
+  get center(): number[] {
     return this._center;
   }
 
@@ -42,7 +38,7 @@ export class AddressSearchComponent implements OnInit {
     this._mapView = mapView;
   }
 
-  get mapView() {
+  get mapView(): esri.MapView {
     return this._mapView;
   }
 
@@ -50,7 +46,7 @@ export class AddressSearchComponent implements OnInit {
     this._mapViewProperties = mapViewProperties;
   }
 
-  get mapViewProperties() {
+  get mapViewProperties(): esri.MapViewProperties {
     return this._mapViewProperties;
   }
 
@@ -58,7 +54,7 @@ export class AddressSearchComponent implements OnInit {
     this._search = search;
   }
 
-  get search() {
+  get search(): esri.Search {
     return this._search;
   }
 
@@ -66,7 +62,7 @@ export class AddressSearchComponent implements OnInit {
     this._searchProperties = searchProperties;
   }
 
-  get searchProperties() {
+  get searchProperties(): esri.SearchProperties {
     return this._searchProperties;
   }
 
@@ -74,7 +70,7 @@ export class AddressSearchComponent implements OnInit {
     this._searchSources = searchSources;
   }
 
-  get searchSources() {
+  get searchSources(): esri.FeatureLayerSource[] {
     return this._searchSources;
   }
 
@@ -82,11 +78,11 @@ export class AddressSearchComponent implements OnInit {
     this._webMap = webMap;
   }
 
-  get webMap() {
+  get webMap(): esri.WebMap {
     return this._webMap;
   }
 
-  get webMapPortalId() {
+  get webMapPortalId(): string {
     return this._webMapPortalId;
   }
 
@@ -94,7 +90,7 @@ export class AddressSearchComponent implements OnInit {
     this._webMapProperties = webMapProperties;
   }
 
-  get webMapProperties() {
+  get webMapProperties(): esri.WebMapProperties {
     return this._webMapProperties;
   }
 
@@ -180,7 +176,7 @@ export class AddressSearchComponent implements OnInit {
         });
 
         this.search.on('search-complete', (event) => {
-          this.address = event.results[0].results[0].feature.attributes;
+          this.address = event.results[0].results[0].feature;
         });
 
       })

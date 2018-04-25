@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RouteSceneViewBasicComponent } from './route-scene-view-basic.component';
 import { SceneViewComponent } from '../scene-view/scene-view.component';
 
@@ -14,7 +13,7 @@ describe('RouteSceneViewBasicComponent', () => {
         SceneViewComponent
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-
-import { Address } from '../address';
 import { AddressService } from '../address.service';
-
+import { Address } from '../address';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import esri = __esri;
 
@@ -15,28 +13,28 @@ import esri = __esri;
 })
 export class AddressQueryComponent implements OnInit {
 
-  private _addresses: Address[] = [];
-  private _selectedAddress: Address;
+  private _features: esri.Graphic[] | Address[] = [];
+  private _selectedFeature: esri.Graphic | Address;
   private _searchTerms = new Subject<string>();
   private _featureSet$: Observable<esri.FeatureSet>;
 
-  set addresses(addresses: Address[]) {
-    this._addresses = addresses;
+  set features(addresses: esri.Graphic[] | Address[]) {
+    this._features = addresses;
   }
 
-  get addresses() {
-    return this._addresses;
+  get features(): esri.Graphic[] | Address[] {
+    return this._features;
   }
 
-  set selectedAddress(address: Address) {
-    this._selectedAddress = address;
+  set selectedFeature(feature: esri.Graphic | Address) {
+    this._selectedFeature = feature;
   }
 
-  get selectedAddress() {
-    return this._selectedAddress;
+  get selectedFeature(): esri.Graphic | Address {
+    return this._selectedFeature;
   }
 
-  get searchTerms() {
+  get searchTerms(): Subject<string> {
     return this._searchTerms;
   }
 
@@ -44,7 +42,7 @@ export class AddressQueryComponent implements OnInit {
     this._featureSet$ = featureSet;
   }
 
-  get featureSet$() {
+  get featureSet$(): Observable<esri.FeatureSet> {
     return this._featureSet$;
   }
 
@@ -63,18 +61,14 @@ export class AddressQueryComponent implements OnInit {
     );
 
     this.featureSet$.subscribe(featureSet => {
-      this.addresses = [];
-      this.selectedAddress = null;
-      const features = featureSet['features'];
-      if (features) {
-        features.forEach(feature => this.addresses.push(feature['attributes']));
-      }
+      this.features = [];
+      this.selectedFeature = null;
+      this.features = featureSet['features'];
     });
-
   }
 
-  onSelectedAddress(address: Address) {
-    this.selectedAddress = address;
+  onSelectedFeature(feature: Address) {
+    this.selectedFeature = feature;
   }
 
 }

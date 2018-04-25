@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 import { Address } from '../address';
+import esri = __esri;
 
 @Component({
   selector: 'app-address-query-result-list',
@@ -9,37 +9,36 @@ import { Address } from '../address';
 })
 export class AddressQueryResultListComponent implements OnInit {
 
-
-  private _addresses: Address[] = [];
-  private _selectedAddress: Address;
+  private _features: esri.Graphic[] | Address[];
+  private _selectedFeature: esri.Graphic | Address;
   private _selectedItem: number;
 
   @Input()
-  set addresses(addresses: Address[]) {
-    this._addresses = addresses;
+  set features(addresses: esri.Graphic[] | Address[]) {
+    this._features = addresses;
   }
 
-  get addresses() {
-    return this._addresses;
+  get features(): esri.Graphic[] | Address[] {
+    return this._features;
   }
 
-  set selectedAddress(address: Address) {
-    this._selectedAddress = address;
+  set selectedFeature(address: esri.Graphic | Address) {
+    this._selectedFeature = address;
   }
 
-  get selectedAddress() {
-    return this._selectedAddress;
+  get selectedFeature(): esri.Graphic | Address {
+    return this._selectedFeature;
   }
 
   set selectedItem(selectedRow: number) {
     this._selectedItem = selectedRow;
   }
 
-  get selectedItem() {
+  get selectedItem(): number {
     return this._selectedItem;
   }
 
-  @Output() selectedAddressEventEmitter = new EventEmitter<Address>();
+  @Output() selectedFeatureEventEmitter = new EventEmitter<Address>();
 
   constructor() {
   }
@@ -47,9 +46,9 @@ export class AddressQueryResultListComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectAddress(address: Address, index: number) {
-    this.selectedAddress = address;
-    this.selectedAddressEventEmitter.emit(this.selectedAddress);
+  selectFeature(feature: Address, index: number) {
+    this.selectedFeature = feature;
+    this.selectedFeatureEventEmitter.emit(this.selectedFeature);
     this.selectedItem = index;
   }
 

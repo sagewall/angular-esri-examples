@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { RouteAddressSearchComponent } from '../route-address-search/route-address-search.component';
 import { RouteGalleryComponent } from '../route-gallery/route-gallery.component';
 import { RouteMapViewBasicComponent } from '../route-map-view-basic/route-map-view-basic.component';

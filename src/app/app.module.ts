@@ -1,10 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing/app-routing.module';
-
 import { GalleryService } from './gallery.service';
-
 import { AppComponent } from './app.component';
 import { MapViewComponent } from './map-view/map-view.component';
 import { SceneViewComponent } from './scene-view/scene-view.component';

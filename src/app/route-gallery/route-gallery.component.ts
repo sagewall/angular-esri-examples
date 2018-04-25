@@ -15,7 +15,7 @@ export class RouteGalleryComponent implements OnInit {
     this._galleryItems = galleryItems;
   }
 
-  get galleryItems() {
+  get galleryItems(): GalleryItem[] {
     return this._galleryItems;
   }
 

@@ -15,7 +15,7 @@ export class GalleryItemComponent implements OnInit {
     this._galleryItem = galleryItem;
   }
 
-  get galleryItem() {
+  get galleryItem(): GalleryItem {
     return this._galleryItem;
   }
 

@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AddressQueryResultListComponent } from './address-query-result-list.component';
 import { AddressQueryResultComponent } from '../address-query-result/address-query-result.component';
 

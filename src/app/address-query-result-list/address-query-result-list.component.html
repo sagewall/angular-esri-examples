@@ -1,9 +1,9 @@
 <h3>Select an address</h3>
-<ul *ngIf="addresses">
-  <li *ngFor="let address of addresses; let i = index" [class.active]="i == selectedItem">
+<ul *ngIf="features">
+  <li *ngFor="let feature of features; let i = index" [class.active]="i == selectedItem">
     <app-address-query-result #addressQueryResult
-                              [address]="address"
-                              (click)="selectAddress(address, i)">
+                              [feature]="feature"
+                              (click)="selectFeature(feature, i)">
     </app-address-query-result>
   </li>
 </ul>

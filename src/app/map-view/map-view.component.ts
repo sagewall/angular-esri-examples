@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnChanges, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Address } from '../address';
 import { loadModules } from 'esri-loader';
 import esri = __esri;
 
@@ -9,7 +10,9 @@ import esri = __esri;
 })
 export class MapViewComponent implements OnInit, OnChanges {
 
-  private _center = [-105.25, 39.75];
+  private _esriLoaderOptions: object = {};
+  private _feature: esri.Graphic | Address;
+  private _center: esri.Point;
   private _layerList: esri.LayerList;
   private _layerListPosition = 'top-right';
   private _layerListProperties: esri.LayerListProperties;
@@ -22,17 +25,35 @@ export class MapViewComponent implements OnInit, OnChanges {
   private _showCenterMarker = false;
   private _showLayerList = true;
   private _showSearch = true;
+  private _spatialReferenceProperties: esri.SpatialReferenceProperties;
+  private _spatialReference: esri.SpatialReference;
   private _webMap: esri.WebMap;
   private _webMapPortalId = '7ebde07ed9b945d9be8c70aeced18b96';
   private _webMapProperties: esri.WebMapProperties;
   private _zoom = 12;
 
+  set esriLoaderOptions(esriLoaderOptions: object) {
+    this._esriLoaderOptions = esriLoaderOptions;
+  }
+
+  get esriLoaderOptions(): object {
+    return this._esriLoaderOptions;
+  }
+
   @Input()
-  set center(center: number[]) {
+  set feature(feature: esri.Graphic | Address) {
+    this._feature = feature;
+  }
+
+  get feature(): esri.Graphic | Address {
+    return this._feature;
+  }
+
+  set center(center: esri.Point) {
     this._center = center;
   }
 
-  get center() {
+  get center(): esri.Point {
     return this._center;
   }
 
@@ -40,7 +61,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._layerList = layerList;
   }
 
-  get layerList() {
+  get layerList(): esri.LayerList {
     return this._layerList;
   }
 
@@ -49,7 +70,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._layerListPosition = layerListPosition;
   }
 
-  get layerListPosition() {
+  get layerListPosition(): string {
     return this._layerListPosition;
   }
 
@@ -57,7 +78,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._layerListProperties = layerListProperties;
   }
 
-  get layerListProperties() {
+  get layerListProperties(): esri.LayerListProperties {
     return this._layerListProperties;
   }
 
@@ -65,7 +86,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._mapView = mapView;
   }
 
-  get mapView() {
+  get mapView(): esri.MapView {
     return this._mapView;
   }
 
@@ -73,7 +94,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._mapViewProperties = mapViewProperties;
   }
 
-  get mapViewProperties() {
+  get mapViewProperties(): esri.MapViewProperties {
     return this._mapViewProperties;
   }
 
@@ -82,7 +103,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._rotation = rotation;
   }
 
-  get rotation() {
+  get rotation(): number {
     return this._rotation;
   }
 
@@ -90,7 +111,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._search = search;
   }
 
-  get search() {
+  get search(): esri.Search {
     return this._search;
   }
 
@@ -99,7 +120,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._searchPosition = searchPosition;
   }
 
-  get searchPosition() {
+  get searchPosition(): string {
     return this._searchPosition;
   }
 
@@ -107,7 +128,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._searchProperties = searchProperties;
   }
 
-  get searchProperties() {
+  get searchProperties(): esri.SearchProperties {
     return this._searchProperties;
   }
 
@@ -116,7 +137,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._showCenterMarker = showCenterMarker;
   }
 
-  get showCenterMarker() {
+  get showCenterMarker(): boolean {
     return this._showCenterMarker;
   }
 
@@ -125,7 +146,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._showLayerList = showLayerList;
   }
 
-  get showLayerList() {
+  get showLayerList(): boolean {
     return this._showLayerList;
   }
 
@@ -134,15 +155,31 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._showSearch = showSearch;
   }
 
-  get showSearch() {
+  get showSearch(): boolean {
     return this._showSearch;
+  }
+
+  set spatialReferenceProperties(spatialReferenceProperties: esri.SpatialReferenceProperties) {
+    this._spatialReferenceProperties = spatialReferenceProperties;
+  }
+
+  get spatialReferenceProperties(): esri.SpatialReferenceProperties {
+    return this._spatialReferenceProperties;
+  }
+
+  set spatialReference(spatialReference: esri.SpatialReference) {
+    this._spatialReference = spatialReference;
+  }
+
+  get spatialReference(): esri.SpatialReference {
+    return this._spatialReference;
   }
 
   set webMap(webMap: esri.WebMap) {
     this._webMap = webMap;
   }
 
-  get webMap() {
+  get webMap(): esri.WebMap {
     return this._webMap;
   }
 
@@ -151,7 +188,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._webMapPortalId = webMapPortalId;
   }
 
-  get webMapPortalId() {
+  get webMapPortalId(): string {
     return this._webMapPortalId;
   }
 
@@ -159,7 +196,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._webMapProperties = webMapProperties;
   }
 
-  get webMapProperties() {
+  get webMapProperties(): esri.WebMapProperties {
     return this._webMapProperties;
   }
 
@@ -168,7 +205,7 @@ export class MapViewComponent implements OnInit, OnChanges {
     this._zoom = zoom;
   }
 
-  get zoom() {
+  get zoom(): number {
     return this._zoom;
   }
 
@@ -178,6 +215,49 @@ export class MapViewComponent implements OnInit, OnChanges {
   private mapViewNodeElementRef: ElementRef;
 
   constructor() {
+    this.esriLoaderOptions = {
+      url: 'https://js.arcgis.com/4.7/'
+    };
+    loadModules([
+      'esri/WebMap',
+      'esri/geometry/Point',
+      'esri/geometry/SpatialReference',
+    ], this.esriLoaderOptions)
+      .then(([
+               WebMap,
+               Point,
+               SpatialReference
+             ]) => {
+        this.webMapProperties = {
+          portalItem: {
+            id: this.webMapPortalId
+          }
+        };
+
+        this.webMap = new WebMap(this.webMapProperties);
+
+        this.spatialReferenceProperties = {
+          wkid: 3857
+        };
+        this.spatialReference = new SpatialReference(this.spatialReferenceProperties);
+
+
+        if (this.feature) {
+          const pointProperties: esri.PointProperties = {
+            x: this.feature.geometry['x'],
+            y: this.feature.geometry['y'],
+            spatialReference: this.spatialReference
+          };
+          this.center = new Point(pointProperties);
+        } else {
+          const pointProperties: esri.PointProperties = {
+            x: -11717239,
+            y: 4824445,
+            spatialReference: this.spatialReference
+          };
+          this.center = new Point(pointProperties);
+        }
+      });
   }
 
   ngOnInit() {
@@ -189,9 +269,7 @@ export class MapViewComponent implements OnInit, OnChanges {
   }
 
   createMapView() {
-    const options = {
-      url: 'https://js.arcgis.com/4.7/'
-    };
+
     loadModules([
       'esri/Graphic',
       'esri/WebMap',
@@ -203,7 +281,7 @@ export class MapViewComponent implements OnInit, OnChanges {
       'esri/widgets/LayerList',
       'esri/widgets/Search'
 
-    ], options)
+    ], this.esriLoaderOptions)
       .then(([
                Graphic,
                WebMap,
@@ -215,13 +293,14 @@ export class MapViewComponent implements OnInit, OnChanges {
                LayerList,
                Search
              ]) => {
-        this.webMapProperties = {
-          portalItem: {
-            id: this.webMapPortalId
-          }
-        };
-
-        this.webMap = new WebMap(this.webMapProperties);
+        if (this.feature) {
+          const pointProperties: esri.PointProperties = {
+            x: this.feature.geometry['x'],
+            y: this.feature.geometry['y'],
+            spatialReference: this.spatialReference
+          };
+          this.center = new Point(pointProperties);
+        }
 
         this.mapViewProperties = {
           container: this.mapViewNodeElementRef.nativeElement,
@@ -230,25 +309,14 @@ export class MapViewComponent implements OnInit, OnChanges {
           zoom: this.zoom,
           map: this.webMap
         };
+
         this.mapView = new MapView(this.mapViewProperties);
 
         if (this.showCenterMarker) {
-          const spatialReferenceProperties: esri.SpatialReferenceProperties = {
-            wkid: 4326
-          };
-          const spatialReference: esri.SpatialReference = new SpatialReference(spatialReferenceProperties);
-
-          const pointProperties: esri.PointProperties = {
-            longitude: this.center[0],
-            latitude: this.center[1],
-            spatialReference: spatialReference
-          };
-          const point: esri.Point = new Point(pointProperties);
-
           const simpleMarkerSymbolProperties: esri.SimpleMarkerSymbolProperties = {
             style: 'circle',
             color: [255, 255, 255, 0],
-            size: '10px',
+            size: '12px',
             outline: {
               color: [255, 255, 255],
               width: 1
@@ -257,7 +325,7 @@ export class MapViewComponent implements OnInit, OnChanges {
           const simpleMarkerSymbol: esri.SimpleMarkerSymbol = new SimpleMarkerSymbol(simpleMarkerSymbolProperties);
 
           const graphicProperties: esri.GraphicProperties = {
-            geometry: point,
+            geometry: this.center,
             symbol: simpleMarkerSymbol
           };
           const graphic: esri.Graphic = new Graphic(graphicProperties);

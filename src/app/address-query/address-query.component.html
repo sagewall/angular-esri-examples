@@ -4,15 +4,15 @@
     <input #searchBox id="search-box" type="number" (keyup)="search(searchBox.value)"/>
   </div>
   <div class="result-list-container">
-    <div *ngIf="addresses.length > 0">
+    <div *ngIf="features.length > 0">
       <app-address-query-result-list
-        [addresses]="addresses"
-        (selectedAddressEventEmitter)="onSelectedAddress($event)">
+        [features]="features"
+        (selectedFeatureEventEmitter)="onSelectedFeature($event)">
       </app-address-query-result-list>
     </div>
   </div>
   <div class="address-detail-container">
-    <app-address-detail #addressDetail *ngIf="selectedAddress" [address]="selectedAddress"></app-address-detail>
+    <app-address-detail #addressDetail *ngIf="selectedFeature" [feature]="selectedFeature"></app-address-detail>
   </div>
 </div>
 
