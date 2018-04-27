@@ -4,9 +4,9 @@
     <input #searchBox id="search-box" type="number" (keyup)="search(searchBox.value)"/>
   </div>
   <div class="result-list-container">
-    <div *ngIf="features.length > 0">
+    <div *ngIf="(featureSet$ | async) as featureSet">
       <app-address-query-result-list
-        [features]="features"
+        [features]="featureSet.features"
         (selectedFeatureEventEmitter)="onSelectedFeature($event)">
       </app-address-query-result-list>
     </div>

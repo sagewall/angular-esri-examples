@@ -13,18 +13,9 @@ import esri = __esri;
 })
 export class AddressQueryComponent implements OnInit {
 
-  private _features: esri.Graphic[] | Address[] = [];
   private _selectedFeature: esri.Graphic | Address;
   private _searchTerms = new Subject<string>();
   private _featureSet$: Observable<esri.FeatureSet>;
-
-  set features(addresses: esri.Graphic[] | Address[]) {
-    this._features = addresses;
-  }
-
-  get features(): esri.Graphic[] | Address[] {
-    return this._features;
-  }
 
   set selectedFeature(feature: esri.Graphic | Address) {
     this._selectedFeature = feature;
@@ -60,11 +51,6 @@ export class AddressQueryComponent implements OnInit {
       switchMap(value => this.addressService.queryHouseNumber(value)),
     );
 
-    this.featureSet$.subscribe(featureSet => {
-      this.features = [];
-      this.selectedFeature = null;
-      this.features = featureSet['features'];
-    });
   }
 
   onSelectedFeature(feature: Address) {
