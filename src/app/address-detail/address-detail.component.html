@@ -1,5 +1,8 @@
 <div *ngIf="feature" #addressDetail class="container">
   <h3>{{feature.attributes.ADDRESS}}</h3>
+  <div class="address-attributes-container">
+    <app-address-attributes [address]="feature"></app-address-attributes>
+  </div>
   <div class="map-container">
     <app-map-view
       [webMapPortalId]="'464d489525914296a95fb476251e416e'"
@@ -9,8 +12,5 @@
       [showCenterMarker]="true"
       [zoom]="15">
     </app-map-view>
-  </div>
-  <div class="address-attributes-container">
-    <app-address-attributes [address]="feature"></app-address-attributes>
   </div>
 </div>
