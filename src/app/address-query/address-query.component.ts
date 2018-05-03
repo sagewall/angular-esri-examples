@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { AddressService } from '../address.service';
@@ -11,7 +11,7 @@ import esri = __esri;
   templateUrl: './address-query.component.html',
   styleUrls: ['./address-query.component.sass']
 })
-export class AddressQueryComponent implements OnInit {
+export class AddressQueryComponent implements OnInit, OnDestroy {
 
   private _searchTerms = new Subject<string>();
   private _featureSet$: Observable<esri.FeatureSet>;
@@ -47,7 +47,10 @@ export class AddressQueryComponent implements OnInit {
         return this.addressService.query(`ADRHSNO=${value}`, '*', 'json', 'ADDRESS');
       })
     );
+  }
 
+  ngOnDestroy() {
+    this.addressSelectionService.clearSelection();
   }
 
 }
