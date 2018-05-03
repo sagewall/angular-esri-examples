@@ -1,6 +1,6 @@
 <h3>Select an address</h3>
 <ul *ngIf="features">
-  <li *ngFor="let feature of features; let i = index" [class.active]="i == selectedItem">
+  <li *ngFor="let feature of features; let i = index" [class.active]="i == addressSelectionService.selectedIndex">
     <app-address-query-result #addressQueryResult
                               [feature]="feature"
                               (click)="selectFeature(feature, i)">

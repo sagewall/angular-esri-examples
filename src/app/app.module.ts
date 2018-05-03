@@ -21,6 +21,7 @@ import { AddressQueryResultListComponent } from './address-query-result-list/add
 import { AddressQueryResultComponent } from './address-query-result/address-query-result.component';
 import { AddressDetailComponent } from './address-detail/address-detail.component';
 import { AddressAttributesComponent } from './address-attributes/address-attributes.component';
+import { AddressSelectionService } from './address-selection.service';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { AddressAttributesComponent } from './address-attributes/address-attribu
   ],
   providers: [
     AddressService,
+    AddressSelectionService,
     GalleryService
   ],
   bootstrap: [AppComponent]

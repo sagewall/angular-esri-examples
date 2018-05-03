@@ -6,13 +6,14 @@
   <div class="result-list-container">
     <div *ngIf="(featureSet$ | async) as featureSet">
       <app-address-query-result-list
-        [features]="featureSet.features"
-        (selectedFeatureEventEmitter)="onSelectedFeature($event)">
+        [features]="featureSet.features">
       </app-address-query-result-list>
     </div>
   </div>
   <div class="address-detail-container">
-    <app-address-detail #addressDetail *ngIf="selectedFeature" [feature]="selectedFeature"></app-address-detail>
+    <app-address-detail #addressDetail *ngIf="addressSelectionService.selectedFeature"
+                        [feature]="addressSelectionService.selectedFeature">
+    </app-address-detail>
   </div>
 </div>
 

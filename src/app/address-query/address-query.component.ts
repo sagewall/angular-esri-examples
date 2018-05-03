@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { AddressService } from '../address.service';
-import { Address } from '../address';
+import { AddressSelectionService } from '../address-selection.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import esri = __esri;
 
@@ -13,17 +13,8 @@ import esri = __esri;
 })
 export class AddressQueryComponent implements OnInit {
 
-  private _selectedFeature: esri.Graphic | Address;
   private _searchTerms = new Subject<string>();
   private _featureSet$: Observable<esri.FeatureSet>;
-
-  set selectedFeature(feature: esri.Graphic | Address) {
-    this._selectedFeature = feature;
-  }
-
-  get selectedFeature(): esri.Graphic | Address {
-    return this._selectedFeature;
-  }
 
   get searchTerms(): Subject<string> {
     return this._searchTerms;
@@ -37,7 +28,10 @@ export class AddressQueryComponent implements OnInit {
     return this._featureSet$;
   }
 
-  constructor(private addressService: AddressService) {
+  constructor(
+    private addressService: AddressService,
+    public addressSelectionService: AddressSelectionService
+  ) {
   }
 
   search(term: string): void {
@@ -48,13 +42,12 @@ export class AddressQueryComponent implements OnInit {
     this.featureSet$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(value => this.addressService.query(`ADRHSNO=${value}`, '*', 'json', 'ADDRESS'))
+      switchMap(value => {
+        this.addressSelectionService.clearSelection();
+        return this.addressService.query(`ADRHSNO=${value}`, '*', 'json', 'ADDRESS');
+      })
     );
 
-  }
-
-  onSelectedFeature(feature: Address) {
-    this.selectedFeature = feature;
   }
 
 }

@@ -8,6 +8,7 @@ import { AddressQueryResultComponent } from '../address-query-result/address-que
 import { AddressDetailComponent } from '../address-detail/address-detail.component';
 import { MapViewComponent } from '../map-view/map-view.component';
 import { AddressAttributesComponent } from '../address-attributes/address-attributes.component';
+import { AddressSelectionService } from '../address-selection.service';
 
 describe('RouteAddressQueryComponent', () => {
   let component: RouteAddressQueryComponent;
@@ -24,7 +25,10 @@ describe('RouteAddressQueryComponent', () => {
         MapViewComponent,
         RouteAddressQueryComponent
       ],
-      providers: [AddressService],
+      providers: [
+        AddressService,
+        AddressSelectionService
+      ],
       imports: [HttpClientTestingModule]
     })
       .compileComponents();
