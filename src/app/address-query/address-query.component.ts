@@ -48,7 +48,7 @@ export class AddressQueryComponent implements OnInit {
     this.featureSet$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(value => this.addressService.queryHouseNumber(value)),
+      switchMap(value => this.addressService.query(`ADRHSNO=${value}`, '*', 'json', 'ADDRESS'))
     );
 
   }
