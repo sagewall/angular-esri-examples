@@ -5,7 +5,7 @@ import esri = __esri;
 @Injectable()
 export class AddressService {
 
-  private _serviceUrl = 'https://mapservices2.jeffco.us/arcgis/rest/services/jMap/Address/MapServer/0/query';
+  private _serviceUrl = 'https://mapservices2.jeffco.us/arcgis/rest/services/jMap/Address/MapServer/0';
 
   get serviceUrl() {
     return this._serviceUrl;
