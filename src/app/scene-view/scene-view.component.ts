@@ -251,7 +251,8 @@ export class SceneViewComponent implements OnInit, OnChanges {
         this.webMapProperties = {
           portalItem: {
             id: this.webMapPortalId
-          }
+          },
+          ground: 'world-elevation'
         };
 
         this.webMap = new WebMap(this.webMapProperties);
