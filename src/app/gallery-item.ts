@@ -1,7 +1,7 @@
-export class GalleryItem {
-  public name: string;
-  public description: string;
-  public routerLink: string;
-  public thumbnail: string;
-  public altText: string;
+export interface GalleryItem {
+  name: string;
+  description: string;
+  routerLink: string;
+  thumbnail: string;
+  altText: string;
 }

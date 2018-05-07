@@ -15,8 +15,8 @@ export class AddressSearchComponent implements OnInit {
   private _center = [-105.201161, 39.727976];
   private _mapView: esri.MapView;
   private _mapViewProperties: esri.MapViewProperties;
-  private _search: esri.Search;
-  private _searchProperties: esri.SearchProperties;
+  private _search: esri.widgetsSearch;
+  private _searchProperties: esri.widgetsSearchProperties;
   private _searchSources: esri.FeatureLayerSource[];
   private _webMap: esri.WebMap;
   private _webMapPortalId = '464d489525914296a95fb476251e416e';
@@ -50,19 +50,19 @@ export class AddressSearchComponent implements OnInit {
     return this._mapViewProperties;
   }
 
-  set search(search: esri.Search) {
+  set search(search: esri.widgetsSearch) {
     this._search = search;
   }
 
-  get search(): esri.Search {
+  get search(): esri.widgetsSearch {
     return this._search;
   }
 
-  set searchProperties(searchProperties: esri.SearchProperties) {
+  set searchProperties(searchProperties: esri.widgetsSearchProperties) {
     this._searchProperties = searchProperties;
   }
 
-  get searchProperties(): esri.SearchProperties {
+  get searchProperties(): esri.widgetsSearchProperties {
     return this._searchProperties;
   }
 

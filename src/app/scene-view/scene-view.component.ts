@@ -20,9 +20,9 @@ export class SceneViewComponent implements OnInit, OnChanges {
   private _layerListProperties: esri.LayerListProperties;
   private _sceneView: esri.SceneView;
   private _sceneViewProperties: esri.SceneViewProperties;
-  private _search: esri.Search;
+  private _search: esri.widgetsSearch;
   private _searchPosition = 'top-left';
-  private _searchProperties: esri.SearchProperties;
+  private _searchProperties: esri.widgetsSearchProperties;
   private _showCenterMarker = false;
   private _showLayerList = true;
   private _showSearch = true;
@@ -118,11 +118,11 @@ export class SceneViewComponent implements OnInit, OnChanges {
     return this._sceneViewProperties;
   }
 
-  set search(search: esri.Search) {
+  set search(search: esri.widgetsSearch) {
     this._search = search;
   }
 
-  get search(): esri.Search {
+  get search(): esri.widgetsSearch {
     return this._search;
   }
 
@@ -135,11 +135,11 @@ export class SceneViewComponent implements OnInit, OnChanges {
     return this._searchPosition;
   }
 
-  set searchProperties(searchProperties: esri.SearchProperties) {
+  set searchProperties(searchProperties: esri.widgetsSearchProperties) {
     this._searchProperties = searchProperties;
   }
 
-  get searchProperties(): esri.SearchProperties {
+  get searchProperties(): esri.widgetsSearchProperties {
     return this._searchProperties;
   }
 

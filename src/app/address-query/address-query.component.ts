@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AddressService } from '../address.service';
 import { AddressSelectionService } from '../address-selection.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
