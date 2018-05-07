@@ -24,13 +24,13 @@ export class SceneViewComponent implements OnInit, OnChanges {
   private _searchPosition = 'top-left';
   private _searchProperties: esri.widgetsSearchProperties;
   private _showCenterMarker = false;
-  private _showLayerList = true;
+  private _showLayerList = false;
   private _showSearch = true;
   private _spatialReferenceProperties: esri.SpatialReferenceProperties;
   private _spatialReference: esri.SpatialReference;
   private _tilt = 45;
   private _webMap: esri.WebMap;
-  private _webMapPortalId = '7ebde07ed9b945d9be8c70aeced18b96';
+  private _webMapPortalId = '55ebf90799fa4a3fa57562700a68c405';
   private _webMapProperties: esri.WebMapProperties;
   private _zoom = 12;
 
