@@ -3,13 +3,18 @@
     label
       font-family: 'Roboto', sans-serif
       font-weight: 700
+      margin: 1em
     input
       font-family: 'Open Sans', sans-serif
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button
-        -webkit-appearance: none
-        margin: 0
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button
+      -webkit-appearance: none
+      margin: 0
+    input[type=number]
+        -moz-appearance: textfield
+
   .result-list-container,
   .address-detail-container
     display: inline-block
     vertical-align: top
+    margin: 1em
