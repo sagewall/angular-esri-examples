@@ -30,7 +30,7 @@ export class SceneViewComponent implements OnInit, OnChanges {
   private _spatialReference: esri.SpatialReference;
   private _tilt = 45;
   private _webMap: esri.WebMap;
-  private _webMapPortalId = '55ebf90799fa4a3fa57562700a68c405';
+  private _webMapPortalId = '413fd05bbd7342f5991d5ec96f4f8b18';
   private _webMapProperties: esri.WebMapProperties;
   private _zoom = 12;
 
