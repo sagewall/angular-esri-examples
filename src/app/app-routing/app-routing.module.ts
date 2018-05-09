@@ -5,8 +5,10 @@ import { RouteGalleryComponent } from '../route-gallery/route-gallery.component'
 import { RouteMapViewBasicComponent } from '../route-map-view-basic/route-map-view-basic.component';
 import { RouteSceneViewBasicComponent } from '../route-scene-view-basic/route-scene-view-basic.component';
 import { RouteAddressQueryComponent } from '../route-address-query/route-address-query.component';
+import { RouteAddressDetailComponent } from '../route-address-detail/route-address-detail.component';
 
 const appRoutes: Routes = [
+  {path: 'address/:id', component: RouteAddressDetailComponent},
   {path: 'address-query', component: RouteAddressQueryComponent},
   {path: 'address-search', component: RouteAddressSearchComponent},
   {path: 'gallery', component: RouteGalleryComponent},

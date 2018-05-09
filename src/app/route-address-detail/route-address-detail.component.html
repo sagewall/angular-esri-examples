@@ -1,0 +1,6 @@
+<section>
+  <div *ngIf="(featureSet$ | async) as address" class="container">
+    <app-address-detail [feature]="address.features[0]"></app-address-detail>
+  </div>
+</section>
+

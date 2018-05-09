@@ -22,6 +22,7 @@ import { AddressQueryResultComponent } from './address-query-result/address-quer
 import { AddressDetailComponent } from './address-detail/address-detail.component';
 import { AddressAttributesComponent } from './address-attributes/address-attributes.component';
 import { AddressSelectionService } from './address-selection.service';
+import { RouteAddressDetailComponent } from './route-address-detail/route-address-detail.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AddressSelectionService } from './address-selection.service';
     AddressQueryResultListComponent,
     AddressQueryResultComponent,
     AddressDetailComponent,
-    AddressAttributesComponent
+    AddressAttributesComponent,
+    RouteAddressDetailComponent
   ],
   imports: [
     BrowserModule,
