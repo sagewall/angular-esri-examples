@@ -216,7 +216,7 @@ export class MapViewComponent implements OnInit, OnChanges {
 
   constructor() {
     this.esriLoaderOptions = {
-      url: 'https://js.arcgis.com/4.7/'
+      url: 'https://js.arcgis.com/4.11/'
     };
     loadModules([
       'esri/WebMap',

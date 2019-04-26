@@ -102,7 +102,7 @@ export class AddressSearchComponent implements OnInit {
 
   ngOnInit() {
     const options = {
-      url: 'https://js.arcgis.com/4.7/'
+      url: 'https://js.arcgis.com/4.11/'
     };
     loadModules([
       'esri/layers/FeatureLayer',
