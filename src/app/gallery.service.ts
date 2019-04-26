@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { of } from 'rxjs';
+import { Observable ,  of } from 'rxjs';
 import { GalleryItem } from './gallery-item';
 
 @Injectable()
